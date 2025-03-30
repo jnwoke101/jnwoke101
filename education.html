@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Education</title>
     <style>
         body {
             font-family: "Times New Roman", serif;
@@ -99,6 +99,33 @@
         .social-icons img:hover {
             opacity: 0.7;
         }
+        /* Education Section */
+        .education-section {
+            margin-top: 50px;
+        }
+        .education-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .degree-summary {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .certifications {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .certifications img {
+            width: 142px;
+            height: 142px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .certifications img:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -108,14 +135,50 @@
     <button class="theme-switch" onclick="toggleTheme()">Light/Dark</button>
 
     <nav class="navbar">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="blog.html">Blog</a>
-        <a href="education.html">Education</a>
+        <a href="education.html" class="active">Education</a>
     </nav>
 
-    <h1>Welcome to My Website</h1>
-    <p>Click the Light/Dark button to switch themes.</p>
+    <!-- Education Section -->
+    <div class="education-section">
+        <h1 class="education-header">My Education</h1>
+
+        <div class="degree-summary">
+            <h2>Degree in Information Technology</h2>
+            <p>Graduated from Towson University, where I gained deep knowledge and practical experience in the field of Information Technology. The degree equipped me with the skills necessary for tackling modern IT challenges, including networking, security, and software development. It laid the foundation for my career and helped me understand the critical role of IT in shaping businesses and society.</p>
+        </div>
+
+        <!-- Certifications Section -->
+        <h2>Certifications</h2>
+        <div class="certifications">
+            <a href="security-plus-certificate.html">
+                <img src="security+.png" alt="Security+ Certification">
+            </a>
+            <a href="cysa-plus-certificate.html">
+                <img src="cysa+.png" alt="CySA+ Certification">
+            </a>
+            <a href="az-900-certificate.html">
+                <img src="az-900.png" alt="AZ-900 Certification">
+            </a>
+            <a href="az-500-certificate.html">
+                <img src="az-500.png" alt="AZ-500 Certification">
+            </a>
+            <a href="tryhackme-soc1-certificate.html">
+                <img src="tryhackme_soc1.png" alt="TryHackMe SOC1 Certification">
+            </a>
+            <a href="tryhackme-soc2-certificate.html">
+                <img src="tryhackme_soc2.png" alt="TryHackMe SOC2 Certification">
+            </a>
+            <a href="ccd-certificate.html">
+                <img src="ccd.png" alt="CCD Certification">
+            </a>
+            <a href="soc-analyst-certificate.html">
+                <img src="soc-analyst.png" alt="SOC Analyst Certification">
+            </a>
+        </div>
+    </div>
 
     <footer class="footer">
         <h2>Connect With Me</h2>
