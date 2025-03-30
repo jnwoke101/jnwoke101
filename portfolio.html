@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            background-color: white;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 268px;
+            height: 100px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 0.5in;
+            font-size: 20px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+            padding: 5px 10px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 100%;
+            background-color: rgba(0, 162, 183, 0.5);
+            transform: scaleY(0);
+            transition: transform 0.3s ease-in-out;
+            z-index: -1;
+        }
+        .navbar a:hover::before {
+            transform: scaleY(1);
+        }
+        .navbar a.active {
+            color: #00A2B7;
+            font-weight: bold;
+        }
+        .theme-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+        }
+        .dark-mode {
+            background-color: #3F3F3F;
+            color: white;
+        }
+        .dark-mode .theme-switch {
+            background-color: white;
+            color: black;
+        }
+        .portfolio-container {
+            padding: 50px 20px;
+        }
+        .portfolio-container h2 {
+            font-size: 36px;
+        }
+        .portfolio-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .portfolio-item {
+            width: 250px;
+            padding: 20px;
+            border: 1px solid black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        .footer::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin-bottom: 20px;
+        }
+        .dark-mode .footer::before {
+            background-color: white;
+        }
+        .social-icons a {
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: opacity 0.3s;
+        }
+        .social-icons img:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <img src="jn.png" alt="Logo" class="logo">
+    <button class="theme-switch" onclick="toggleTheme()">Light/Dark</button>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="blog.html">Blog</a>
+    </nav>
+
+    <div class="portfolio-container">
+        <h2>My Portfolio</h2>
+        <p>Here are some of the projects I've worked on.</p>
+
+        <div class="portfolio-items">
+            <div class="portfolio-item">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Project 1</h3>
+                <p>Description of project 1 goes here.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Project 2</h3>
+                <p>Description of project 2 goes here.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Project 3</h3>
+                <p>Description of project 3 goes here.</p>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <h2>Connect With Me</h2>
+        <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
+            <a href="https://twitter.com" target="_blank"><img src="x.png" alt="X/Twitter"></a>
+            <a href="https://youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Highlight the active page dynamically
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.navbar a').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
