@@ -187,9 +187,28 @@
     </footer>
 
     <script>
+        // Function to toggle between light and dark modes
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
+
+            // Save the theme preference in localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
         }
+
+        // Check if a theme is saved in localStorage and apply it
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        };
 
         // Highlight the active page dynamically
         document.querySelectorAll('.navbar a').forEach(link => {
