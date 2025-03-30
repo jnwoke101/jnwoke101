@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            background-color: white;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 268px;
+            height: 100px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 0.5in;
+            font-size: 20px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+            padding: 5px 10px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 100%;
+            background-color: rgba(0, 162, 183, 0.5);
+            transform: scaleY(0);
+            transition: transform 0.3s ease-in-out;
+            z-index: -1;
+        }
+        .navbar a:hover::before {
+            transform: scaleY(1);
+        }
+        .navbar a.active {
+            color: #00A2B7;
+            font-weight: bold;
+        }
+        .theme-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+        }
+        .dark-mode {
+            background-color: #3F3F3F;
+            color: white;
+        }
+        .dark-mode .theme-switch {
+            background-color: white;
+            color: black;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        .footer::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin-bottom: 20px;
+        }
+        .dark-mode .footer::before {
+            background-color: white;
+        }
+        .social-icons a {
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: opacity 0.3s;
+        }
+        .social-icons img:hover {
+            opacity: 0.7;
+        }
+        section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        section h2 {
+            font-size: 1.5em;
+            border-bottom: 2px solid #00A2B7;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .certifications ul,
+        .courses ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .certifications li,
+        .courses li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .certifications li:hover,
+        .courses li:hover {
+            background-color: #e1f7d5;
+        }
+        .degree,
+        .university {
+            font-weight: bold;
+        }
+        .degree-info {
+            margin-top: 10px;
+        }
+        .course-links a {
+            color: #00A2B7;
+            text-decoration: none;
+        }
+        .course-links a:hover {
+            text-decoration: underline;
+        }
+        .courses ul li .course-name {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .courses ul li .course-status {
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <img src="jn.png" alt="Logo" class="logo">
+    <button class="theme-switch" onclick="toggleTheme()">Light/Dark</button>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="education.html" class="active">Education</a>
+    </nav>
+
+    <h1>My Education & Learning Journey</h1>
+
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>
+                <strong>Certified Ethical Hacker (CEH)</strong>
+                <p>Issued by EC-Council | Date: March 2024</p>
+            </li>
+            <li>
+                <strong>CompTIA Security+</strong>
+                <p>Issued by CompTIA | Date: February 2024</p>
+            </li>
+            <li>
+                <strong>Certified Network Defender (CND)</strong>
+                <p>Issued by EC-Council | Date: January 2024</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Bachelor's Degree Section -->
+    <section class="degree-section">
+        <h2>Education</h2>
+        <div class="degree-info">
+            <p class="degree">Bachelor's Degree in Information Technology</p>
+            <p class="university">Towson University</p>
+            <p>Graduation Date: May 2023</p>
+            <p>Relevant Coursework: Network Security, Cybersecurity, Programming, Cloud Computing, Data Structures & Algorithms</p>
+        </div>
+    </section>
+
+    <!-- Online Courses Section -->
+    <section class="courses">
+        <h2>Online Courses & Ongoing Learning</h2>
+        <ul>
+            <li>
+                <div class="course-name">TryHackMe SOC</div>
+                <div class="course-status">In Progress</div>
+                <p>Learning Security Operations Center (SOC) concepts and hands-on training.</p>
+                <div class="course-links"><a href="https://tryhackme.com">Visit TryHackMe</a></div>
+            </li>
+            <li>
+                <div class="course-name">Hack The Box: Pentest</div>
+                <div class="course-status">In Progress</div>
+                <p>Hands-on penetration testing challenges and real-world vulnerability exploitation.</p>
+                <div class="course-links"><a href="https://www.hackthebox.eu">Visit HackTheBox</a></div>
+            </li>
+            <li>
+                <div class="course-name">Cybrary: Advanced Network Security</div>
+                <div class="course-status">Completed</div>
+                <p>Advanced training on network security, firewall configurations, and secure network design.</p>
+                <div class="course-links"><a href="https://www.cybrary.it">Visit Cybrary</a></div>
+            </li>
+        </ul>
+    </section>
+
+    <footer class="footer">
+        <h2>Connect With Me</h2>
+        <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
+            <a href="https://twitter.com" target="_blank"><img src="x.png" alt="X/Twitter"></a>
+            <a href="https://youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle between light and dark modes
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+
+            // Save the theme preference in localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check if a theme is saved in localStorage and apply it
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        };
+
+        // Highlight the active page dynamically
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.navbar a').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
 
