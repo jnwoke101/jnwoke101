@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -324,71 +324,6 @@
             const newTransformValue = `translateX(-${currentIndex * 340}px)`;
             document.getElementById('coverflow').style.transform = newTransformValue;
         }
-    </script>
-</body>
-</html>
-<div class="blog-post">
-            <img src="blog2-thumbnail.jpg" alt="Blog 2">
-            <h2><a href="blog2.html">Blog Post Title 2</a></h2>
-        </div>
-        <div class="blog-post">
-            <img src="blog3-thumbnail.jpg" alt="Blog 3">
-            <h2><a href="blog3.html">Blog Post Title 3</a></h2>
-        </div>
-        <div class="blog-post">
-            <img src="blog4-thumbnail.jpg" alt="Blog 4">
-            <h2><a href="blog4.html">Blog Post Title 4</a></h2>
-        </div>
-        <div class="blog-post">
-            <img src="blog5-thumbnail.jpg" alt="Blog 5">
-            <h2><a href="blog5.html">Blog Post Title 5</a></h2>
-        </div>
-        <div class="blog-post">
-            <img src="blog6-thumbnail.jpg" alt="Blog 6">
-            <h2><a href="blog6.html">Blog Post Title 6</a></h2>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <h2>Connect With Me</h2>
-        <div class="social-icons">
-            <a href="https://linkedin.com" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
-            <a href="https://twitter.com" target="_blank"><img src="x.png" alt="X/Twitter"></a>
-            <a href="https://youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
-        </div>
-    </footer>
-
-    <script>
-        // Function to toggle between light and dark modes
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-
-            // Save the theme preference in localStorage
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-            } else {
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        // Check if a theme is saved in localStorage and apply it
-        window.onload = function() {
-            const savedTheme = localStorage.getItem('theme');
-
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-            }
-        };
-
-        // Highlight the active page dynamically
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.navbar a').forEach(el => el.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
     </script>
 </body>
 </html>
