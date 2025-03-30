@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            background-color: white;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 268px;
+            height: 100px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 0.5in;
+            font-size: 20px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+            padding: 5px 10px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 100%;
+            background-color: rgba(0, 162, 183, 0.5);
+            transform: scaleY(0);
+            transition: transform 0.3s ease-in-out;
+            z-index: -1;
+        }
+        .navbar a:hover::before {
+            transform: scaleY(1);
+        }
+        .navbar a.active {
+            color: #00A2B7;
+            font-weight: bold;
+        }
+        .theme-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+        }
+        .dark-mode {
+            background-color: #3F3F3F;
+            color: white;
+        }
+        .dark-mode .theme-switch {
+            background-color: white;
+            color: black;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        .footer::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin-bottom: 20px;
+        }
+        .dark-mode .footer::before {
+            background-color: white;
+        }
+        .social-icons a {
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: opacity 0.3s;
+        }
+        .social-icons img:hover {
+            opacity: 0.7;
+        }
+        /* Education Section */
+        .education-section {
+            margin-top: 50px;
+        }
+        .education-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .degree-summary {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .certifications {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .certifications img {
+            width: 142px;
+            height: 142px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .certifications img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <img src="towson-logo.png" alt="Towson University Logo" class="logo">
+    <button class="theme-switch" onclick="toggleTheme()">Light/Dark</button>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="education.html" class="active">Education</a>
+    </nav>
+
+    <!-- Education Section -->
+    <div class="education-section">
+        <h1 class="education-header">My Education</h1>
+
+        <div class="degree-summary">
+            <h2>Degree in Information Technology</h2>
+            <p>Graduated from Towson University, where I gained deep knowledge and practical experience in the field of Information Technology. The degree equipped me with the skills necessary for tackling modern IT challenges, including networking, security, and software development. It laid the foundation for my career and helped me understand the critical role of IT in shaping businesses and society.</p>
+        </div>
+
+        <!-- Certifications Section -->
+        <h2>Certifications</h2>
+        <div class="certifications">
+            <a href="security-plus-certificate.html">
+                <img src="security+.png" alt="Security+ Certification">
+            </a>
+            <a href="cysa-plus-certificate.html">
+                <img src="cysa+.png" alt="CySA+ Certification">
+            </a>
+            <a href="az-900-certificate.html">
+                <img src="az-900.png" alt="AZ-900 Certification">
+            </a>
+            <a href="az-500-certificate.html">
+                <img src="az-500.png" alt="AZ-500 Certification">
+            </a>
+            <a href="tryhackme-soc1-certificate.html">
+                <img src="tryhackme_soc1.png" alt="TryHackMe SOC1 Certification">
+            </a>
+            <a href="tryhackme-soc2-certificate.html">
+                <img src="tryhackme_soc2.png" alt="TryHackMe SOC2 Certification">
+            </a>
+            <a href="ccd-certificate.html">
+                <img src="ccd.png" alt="CCD Certification">
+            </a>
+            <a href="soc-analyst-certificate.html">
+                <img src="soc-analyst.png" alt="SOC Analyst Certification">
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <h2>Connect With Me</h2>
+        <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
+            <a href="https://twitter.com" target="_blank"><img src="x.png" alt="X/Twitter"></a>
+            <a href="https://youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle between light and dark modes
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+
+            // Save the theme preference in localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check if a theme is saved in localStorage and apply it
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        };
+
+        // Highlight the active page dynamically
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.navbar a').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
