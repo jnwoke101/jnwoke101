@@ -5,14 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog</title>
   <style>
+    :root {
+      --bg-color: white;
+      --text-color: black;
+      --button-bg: black;
+      --button-text: white;
+      --nav-hover-bg: rgba(0, 162, 183, 0.5);
+      --active-link-color: #00A2B7;
+    }
+
     body {
       font-family: "Times New Roman", serif;
-      background-color: white;
-      color: black;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
       padding: 0;
       text-align: center;
     }
+
     .logo {
       position: absolute;
       top: 10px;
@@ -20,6 +30,7 @@
       width: 268px;
       height: 100px;
     }
+
     .navbar {
       display: flex;
       justify-content: center;
@@ -27,6 +38,7 @@
       gap: 0.5in;
       font-size: 20px;
     }
+
     .navbar a {
       text-decoration: none;
       color: inherit;
@@ -34,6 +46,7 @@
       position: relative;
       transition: color 0.3s;
     }
+
     .navbar a::before {
       content: "";
       position: absolute;
@@ -41,18 +54,21 @@
       right: 0;
       bottom: -5px;
       height: 100%;
-      background-color: rgba(0, 162, 183, 0.5);
+      background-color: var(--nav-hover-bg);
       transform: scaleY(0);
       transition: transform 0.3s ease-in-out;
       z-index: -1;
     }
+
     .navbar a:hover::before {
       transform: scaleY(1);
     }
+
     .navbar a.active {
-      color: #00A2B7;
+      color: var(--active-link-color);
       font-weight: bold;
     }
+
     .theme-switch {
       position: absolute;
       top: 20px;
@@ -61,41 +77,43 @@
       cursor: pointer;
       border: none;
       border-radius: 5px;
-      background-color: black;
-      color: white;
+      background-color: var(--button-bg);
+      color: var(--button-text);
     }
+
     .dark-mode {
-      background-color: #3F3F3F;
-      color: white;
+      --bg-color: #3F3F3F;
+      --text-color: white;
+      --button-bg: white;
+      --button-text: black;
+      --nav-hover-bg: rgba(255, 255, 255, 0.5);
     }
-    .dark-mode .theme-switch {
-      background-color: white;
-      color: black;
-    }
+
     .footer {
       margin-top: 50px;
       padding: 20px;
     }
+
     .footer::before {
       content: "";
       display: block;
       width: 100%;
       height: 2px;
-      background-color: black;
+      background-color: var(--text-color);
       margin-bottom: 20px;
     }
-    .dark-mode .footer::before {
-      background-color: white;
-    }
+
     .social-icons a {
       margin: 0 15px;
       text-decoration: none;
     }
+
     .social-icons img {
       width: 30px;
       height: 30px;
       transition: opacity 0.3s;
     }
+
     .social-icons img:hover {
       opacity: 0.7;
     }
@@ -110,6 +128,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
+
     .slide {
       position: absolute;
       width: 100%;
@@ -117,15 +136,18 @@
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
+
     .slide.active {
       opacity: 1;
       z-index: 1;
     }
+
     .slide a {
       display: block;
       width: 100%;
       height: 100%;
     }
+
     .slide img {
       width: 100%;
       height: 100%;
@@ -141,6 +163,7 @@
       flex-wrap: wrap;
       gap: 15px;
     }
+
     .filter-buttons button {
       padding: 10px 20px;
       border: none;
@@ -151,6 +174,7 @@
       font-size: 16px;
       transition: background-color 0.3s;
     }
+
     .filter-buttons button:hover,
     .filter-buttons button.active {
       background-color: #007a8a;
@@ -165,6 +189,7 @@
       max-width: 1200px;
       margin: 0 auto 60px;
     }
+
     .blog-card {
       width: 325px;
       height: 260px;
@@ -174,25 +199,15 @@
       transition: transform 0.3s;
       background-color: #f9f9f9;
     }
+
     .blog-card:hover {
       transform: scale(1.05);
     }
+
     .blog-card img {
       width: 100%;
-      height: 60%;
+      height: 100%;
       object-fit: cover;
-    }
-    .blog-card .content {
-      padding: 10px;
-    }
-    .blog-card .content h3 {
-      margin: 0 0 5px;
-      font-size: 18px;
-    }
-    .blog-card .content p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
     }
   </style>
 </head>
@@ -235,48 +250,32 @@
   <!-- Filter Buttons -->
   <div class="filter-buttons">
     <button class="active" onclick="filterSelection('all')">All</button>
-    <button onclick="filterSelection('cloud')">Cloud</button>
-    <button onclick="filterSelection('scripting')">Scripting</button>
-    <button onclick="filterSelection('other')">Other</button>
+    <button onclick="filterSelection('azure')">Azure</button>
+    <button onclick="filterSelection('javascript')">JavaScript</button>
+    <button onclick="filterSelection('python')">Python</button>
     <!-- Add more filter buttons as needed -->
   </div>
 
   <!-- Blog Grid -->
   <div class="blog-grid" id="blogGrid">
-    <div class="blog-card cloud">
+    <div class="blog-card azure">
       <a href="azure1.html">
         <img src="studying_azure.png" alt="Azure Blog">
-        <div class="content">
-          <h3>Studying Azure</h3>
-          <p>Exploring Azure services and certifications.</p>
-        </div>
       </a>
     </div>
     <div class="blog-card javascript">
       <a href="blog2.html">
         <img src="blog2-thumbnail.jpg" alt="JavaScript Blog">
-        <div class="content">
-          <h3>JavaScript Tips</h3>
-          <p>Enhance your JS skills with these tips.</p>
-        </div>
       </a>
     </div>
     <div class="blog-card python">
       <a href="blog3.html">
         <img src="blog3-thumbnail.jpg" alt="Python Blog">
-        <div class="content">
-          <h3>Python Projects</h3>
-          <p>Fun projects to improve your Python.</p>
-        </div>
       </a>
     </div>
     <div class="blog-card azure">
       <a href="blog4.html">
         <img src="blog4-thumbnail.jpg" alt="Azure Blog 2">
-        <div class="content">
-          <h3>Azure Functions</h3>
-          <p>Understanding serverless computing.</p>
-        </div>
       </a>
     </div>
     <!-- Add more blog cards with appropriate classes -->
@@ -302,11 +301,33 @@
       }
     }
 
+    // Apply saved theme on load
     window.onload = function() {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
       } else {
-        document.body.classList
-::contentReference[oaicite:16]{index=16}
+        document.body.classList.remove('dark-mode');
+      }
+    };
+
+    // Slideshow logic
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    setInterval(() => {
+      slideIndex = (slideIndex + 1) % totalSlides;
+      showSlide(slideIndex);
+    }, 700
+::contentReference[oaicite:1]{index=1}
  
