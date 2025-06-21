@@ -1,160 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body {
-            font-family: "Times New Roman", serif;
-            background-color: white;
-            color: black;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 268px;
-            height: 100px;
-        }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            gap: 0.5in;
-            font-size: 20px;
-        }
-        .navbar a {
-            text-decoration: none;
-            color: inherit;
-            padding: 5px 10px;
-            position: relative;
-            transition: color 0.3s;
-        }
-        .navbar a::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -5px;
-            height: 100%;
-            background-color: rgba(0, 162, 183, 0.5);
-            transform: scaleY(0);
-            transition: transform 0.3s ease-in-out;
-            z-index: -1;
-        }
-        .navbar a:hover::before {
-            transform: scaleY(1);
-        }
-        .navbar a.active {
-            color: #00A2B7;
-            font-weight: bold;
-        }
-        .theme-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: black;
-            color: white;
-        }
-        .dark-mode {
-            background-color: #3F3F3F;
-            color: white;
-        }
-        .dark-mode .theme-switch {
-            background-color: white;
-            color: black;
-        }
-        .footer {
-            margin-top: 50px;
-            padding: 20px;
-        }
-        .footer::before {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: black;
-            margin-bottom: 20px;
-        }
-        .dark-mode .footer::before {
-            background-color: white;
-        }
-        .social-icons a {
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        .social-icons img {
-            width: 30px;
-            height: 30px;
-            transition: opacity 0.3s;
-        }
-        .social-icons img:hover {
-            opacity: 0.7;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joseph Nwoke | Cybersecurity Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+    }
+    /* Custom scroll bar styling */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #161b22;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #2ac3de;
+      border-radius: 10px;
+      border: 2px solid #161b22;
+    }
+  </style>
 </head>
-<body>
-    <img src="jn.png" alt="Logo" class="logo">
-    <button class="theme-switch" onclick="toggleTheme()">Light/Dark</button>
-    <nav class="navbar">
-        <a href="index.html" class="active">Home</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="blog.html">Blog</a>
-        <a href="education.html">Education</a>
+<body class="bg-[#0d1117] text-[#c9d1d9]">
+  <!-- Header -->
+  <section class="text-center py-12">
+    <h1 class="text-5xl font-bold text-[#2ac3de]">JOSEPH NWOKE</h1>
+    <p class="text-lg text-[#2ac3de] mt-2">Cybersecurity Analyst | PenTester | IT Professional</p>
+    <button class="mt-6 px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">
+      Projects
+    </button>
+    <button class="mt-6 px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">
+      Education
+    </button>
+    <button class="mt-6 px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">
+      Career
+    </button>
+  </section>
 
+  <!-- About Me -->
+  <section class="max-w-4xl mx-auto bg-[#161b22] p-6 rounded-lg flex items-center gap-6">
+    <img src="https://via.placeholder.com/120" alt="Profile" class="w-28 h-28 rounded-full border-4 border-[#2ac3de]" />
+    <div>
+      <h2 class="text-2xl text-[#2ac3de] mb-2">ABOUT ME</h2>
+      <p>
+        I am a cybersecurity professional with a passion for protecting systems and networks.
+        My expertise includes threat analysis, vulnerability assessment, and incident response.
+      </p>
+    </div>
+  </section>
 
-    </nav>
-    <h1>I'm Joseph Nwoke</h1>
-    <p>IT professional with a solid foundation in system administration and cybersecurity, gained through both professional roles and hands-on personal projects. Experienced in managing and securing IT infrastructures, with a focus on automation and cloud technologies. Proficient in scripting for task automation and adept at optimizing workflows to enhance system efficiency. Skilled in utilizing tools like Azure Active Directory and SCCM for effective user and system management.</p>
+  <!-- Education -->
+  <section class="max-w-4xl mx-auto mt-10">
+    <h2 class="text-2xl text-[#2ac3de] mb-4">EDUCATION</h2>
+    <div class="bg-[#161b22] p-6 rounded-lg">
+      <p class="font-semibold">University of Maryland Global Campus</p>
+      <p class="text-sm text-[#8b949e]">Bachelor of Science in Cybersecurity — Senior Undergraduate</p>
+    </div>
+  </section>
 
-    <footer class="footer">
-        <h2>Connect With Me</h2>
-        <div class="social-icons">
-            <a href="https://linkedin.com" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
-            <a href="https://twitter.com" target="_blank"><img src="x.png" alt="X/Twitter"></a>
-            <a href="https://youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
-        </div>
-    </footer>
+  <!-- Certifications -->
+  <section class="max-w-4xl mx-auto mt-10">
+    <h2 class="text-2xl text-[#2ac3de] mb-4">CERTIFICATIONS</h2>
+    <div class="bg-[#161b22] p-6 rounded-lg h-64 overflow-y-auto custom-scrollbar">
+      <ul class="space-y-4">
+        <li class="flex justify-between items-center">
+ <span>CompTIA Security+</span>
+    <img src="CompTIA_logo.png" class="h-6" alt="CompTIA" />
+  </li>
+  <li class="flex justify-between items-center">
+    <span>CompTIA CySA+</span>
+    <img src="CompTIA_logo.png" class="h-6" alt="CompTIA" />
+  </li>
+  <li class="flex justify-between items-center">
+    <span>TryHackMe SOC Level 1</span>
+    <img src="TryHackMe_logo.png" class="h-6" alt="TryHackMe" />
+  </li>
+  <li class="flex justify-between items-center">
+    <span>TryHackMe Junior Pentester</span>
+    <img src="TryHackMe_logo.png" class="h-6" alt="TryHackMe" />
+  </li>
+  <li class="flex justify-between items-center">
+    <span>Hack The Box Certified Penetration Testing Specialist (CPTS)</span>
+    <img src="HTB_logo.png" class="h-6" alt="Hack The Box" />
+  </li>
+  <li class="flex justify-between items-center">
+    <span>Microsoft Azure Security Engineer</span>
+    <img src="Microsoft_Azure_logo.png" class="h-6" alt="Azure" />
+  </li>
+  <li class="flex justify-between items-center">
+    <span>AWS Certified Security – Specialty</span>
+    <img src="Amazon_Web_Services_logo.png" class="h-6" alt="AWS" />
+  </li>
+  <li class="flex justify-between items-center">
+    <span>Google Cybersecurity Professional Certificate</span>
+    <img src="Google_logo.png" class="h-6" alt="Google" />
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <script>
-        // Function to toggle between light and dark modes
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
+  <!-- Skills & Tools -->
+  <section class="max-w-4xl mx-auto mt-10">
+    <h2 class="text-2xl text-[#2ac3de] mb-4">SKILLS & TOOLS</h2>
+    <div class="flex flex-wrap gap-6 text-center text-sm">
+      <img src="linux-logo.png" class="h-12" />
+      <img src="Metasploit-logo.png" class="h-12" />
+      <img src="wireshark-logo.png" class="h-12" />
+      <img src="zeek-logo.png" class="h-12" />
+      <img src="Python-logo.png" class="h-12" />
+      <img src="Splunk-logo.png" class="h-12" />
+      <img src="nmap-logo.png" class="h-12" />
+      <img src="burp-suite-logo.png" class="h-12" />
+    </div>
+  </section>
 
-            // Save the theme preference in localStorage
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-            } else {
-                localStorage.setItem('theme', 'light');
-            }
-        }
+  <!-- Projects -->
+  <section class="max-w-4xl mx-auto mt-10">
+    <h2 class="text-2xl text-[#2ac3de] mb-4">PROJECTS</h2>
+    <div class="bg-[#161b22] p-6 rounded-lg">
+      <p class="text-[#2ac3de] font-bold">&gt; ls project1</p>
+      <p class="text-[#ff5555]">cat README.md</p>
+      <p class="mt-2">Developed a network monitoring tool to analyze and visualize traffic patterns.</p>
+      <img src="https://via.placeholder.com/400x200" alt="Project Screenshot" class="mt-4 rounded" />
+    </div>
+  </section>
 
-        // Check if a theme is saved in localStorage and apply it
-        window.onload = function() {
-            const savedTheme = localStorage.getItem('theme');
-
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-            }
-        };
-
-        // Highlight the active page dynamically
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.navbar a').forEach(el => el.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
+  <!-- Footer -->
+  <footer class="text-center py-8 text-sm text-[#8b949e] mt-12">
+    <h2>Connect With Me</h2>
+    <div class="social-icons">
+      <a href="https://linkedin.com" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
+    </div>
+  </footer>
 </body>
 </html>
