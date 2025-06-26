@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joseph Nwoke | Cybersecurity Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header Section */
+    .header-section {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+    .header-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2ac3de;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .header-section p {
+      font-size: 1.25rem;
+      color: #2ac3de;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .header-section .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .header-section button {
+      margin-top: 1rem;
+      padding: 0.5rem 2rem;
+      border: 2px solid #2ac3de;
+      background: transparent;
+      color: #2ac3de;
+      font-weight: 600;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .header-section button:hover {
+      background-color: #2ac3de;
+      color: #0d1117;
+    }
+
+    /* Circles Grid */
+    .circle-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 2rem 0 4rem 0;
+    }
+
+    .circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #2ac3de;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #c9d1d9;
+      box-shadow: 0 0 10px #2ac3de;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .circle:hover {
+      transform: scale(1.1);
+    }
+
+    .circle a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: #0d1117;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .circle a:hover {
+      text-decoration: underline;
+    }
+
+    /* Carousel styles */
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 6rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #2ac3de;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 2rem;
+      z-index: 10;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px #2ac3de;
+    }
+
+    .carousel-arrow.left {
+      left: 1rem;
+    }
+
+    .carousel-arrow.right {
+      right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <section class="header-section">
+    <h1>JOSEPH NWOKE</h1>
+    <p>Cybersecurity Analyst | PenTester | IT Professional</p>
+    <div class="btn-group">
+      <button>Projects</button>
+      <button>Education</button>
+      <button>Career</button>
+    </div>
+  </section>
+
+  <!-- Home Projects -->
+  <section class="max-w-7xl mx-auto pt-8">
+    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Home Projects</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left">&#9664;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="smart-firewall.html">Smart Firewall</a></div>
+            <div class="circle"><a href="pi-ids.html">Pi IDS</a></div>
+            <div class="circle"><a href="threat-feed.html">Threat Feed</a></div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="siem-setup.html">SIEM Setup</a></div>
+            <div class="circle"><a href="home-soc.html">Home SOC</a></div>
+            <div class="circle"><a href="log-tracker.html">Log Tracker</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow right">&#9654;</button>
+    </div>
+  </section>
+
+  <!-- CTFs & Bug Bounties -->
+  <section class="max-w-7xl mx-auto">
+    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">CTFs & Bug Bounties</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left">&#9664;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="htb-ad.html">HTB AD</a></div>
+            <div class="circle"><a href="thm-blue.html">THM Blue</a></div>
+            <div class="circle"><a href="xss-acme.html">XSS Acme</a></div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="sql-bug.html">SQL Bug</a></div>
+            <div class="circle"><a href="rce-report.html">RCE Report</a></div>
+            <div class="circle"><a href="burp-exploit.html">Burp Exploit</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow right">&#9654;</button>
+    </div>
+  </section>
+
+  <!-- Other Projects -->
+  <section class="max-w-7xl mx-auto">
+    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Other Projects</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left">&#9664;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="net-mon.html">Net Mon</a></div>
+            <div class="circle"><a href="py-auto.html">Py Auto</a></div>
+            <div class="circle"><a href="log-parse.html">Log Parse</a></div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="cloud-sync.html">Cloud Sync</a></div>
+            <div class="circle"><a href="threat-intel.html">Threat Intel</a></div>
+            <div class="circle"><a href="dns-watch.html">DNS Watch</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow right">&#9654;</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-12 text-sm text-[#8b949e]">
+    <h2 class="text-xl mb-4">Connect With Me</h2>
+    <div class="flex justify-center gap-6">
+      <a href="https://linkedin.com" target="_blank">
+        <img src="linkedin.png" alt="LinkedIn" class="h-8" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+      const track = wrapper.querySelector('.carousel-track');
+      const slides = wrapper.querySelectorAll('.carousel-slide');
+      const btnLeft = wrapper.querySelector('.carousel-arrow.left');
+      const btnRight = wrapper.querySelector('.carousel-arrow.right');
+      let index = 0;
+
+      function updateSlide() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      btnLeft.addEventListener('click', () => {
+        index = (index === 0) ? slides.length - 1 : index - 1;
+        updateSlide();
+      });
+
+      btnRight.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        updateSlide();
+      });
+
+      setInterval(() => {
+        index = (index + 1) % slides.length;
+        updateSlide();
+      }, 10000);
+    });
+  </script>
+</body>
+</html>
