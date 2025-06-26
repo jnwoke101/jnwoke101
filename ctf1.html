@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joseph Nwoke | CTF: Bank Race Condition</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #161b22;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #2ac3de;
+      border-radius: 10px;
+      border: 2px solid #161b22;
+    }
+    .footer {
+      margin-top: 50px;
+      padding: 20px;
+    }
+    .footer::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin-bottom: 20px;
+    }
+    .social-icons a {
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      transition: opacity 0.3s;
+    }
+    .social-icons img:hover {
+      opacity: 0.7;
+    }
+    .zoomable {
+      max-width: 100%;
+      cursor: zoom-in;
+      display: block;
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 1918px;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: 0 0 25px #2ac3de;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="bg-[#0d1117] text-[#c9d1d9]">
+  <!-- Header -->
+  <section class="text-center py-12">
+    <h1 class="text-5xl font-bold text-[#2ac3de]">JOSEPH NWOKE</h1>
+    <p class="text-lg text-[#2ac3de] mt-2">Cybersecurity Analyst | PenTester | IT Professional</p>
+    <div class="mt-6 space-x-4">
+      <a href="index.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">About Me</button></a>
+      <a href="projects.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Projects</button></a>
+      <a href="education.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Education</button></a>
+      <a href="career.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Career</button></a>
+    </div>
+  </section>
+
+  <!-- CTF Overview -->
+  <section class="max-w-4xl mx-auto bg-[#161b22] p-6 rounded-lg">
+    <h2 class="text-3xl text-[#2ac3de] mb-4">CTF Overview: Exploiting a Bank Web Server Race Condition</h2>
+    <h3 class="text-xl text-[#2ac3de] mt-6">Objective</h3>
+    <ul class="list-disc list-inside">
+      <li>Simulate a scenario where I, acting as an attacker, attempt to increase the balance of one target bank account to at least $1000.</li>
+      <li>Each of the three accounts starts with $100.</li>
+      <li>In a real-world situation, one account could be mine (or someone I'm helping), and I’ve gained access to the other two via phishing or other credential theft methods.</li>
+    </ul>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Tools Used</h3>
+    <ul class="list-disc list-inside">
+      <li>BurpSuite: Used to intercept and repeat POST requests to exploit a race condition vulnerability in the bank’s web server.</li>
+    </ul>
+    <img src="burpsuite-logo.png" alt="BurpSuite Logo" class="h-12 mt-2" />
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Steps Taken</h3>
+    <ol class="list-decimal list-inside space-y-4">
+      <li>
+        <strong>Setup and Access</strong><br/>
+        <img src="THM-race-condition-ctf-1.png" alt="Access" class="zoomable" />
+        <p>Open BurpSuite's browser and log in using one victim’s credentials in order to transfer the money. Enable the Intercept feature to capture outgoing POST requests.</p>
+      </li>
+      <li>
+        <strong>Capturing and Preparing the POST Request</strong><br/>
+        <img src="THM-race-condition-ctf-2.png" alt="Capture" class="zoomable" />
+        <p>Identify the POST request that handles the money transfer. Forward the request, then locate it in the HTTP history under the Proxy tab. Right-click the POST action and send it to the Repeater.</p>
+      </li>
+      <li>
+        <strong>Exploiting the Race Condition</strong><br/>
+        <img src="THM-race-condition-ctf-3.png" alt="Exploit" class="zoomable" />
+        <p>In the Repeater tab, create a new group and add the money transfer request to it. Duplicate the tab 50 times to simulate multiple simultaneous transactions. Send the requests in parallel to overload the server and exploit the race condition.</p>
+      </li>
+      <li>
+        <strong>Verification</strong><br/>
+        <img src="THM-race-condition-ctf-4.png" alt="Verify" class="zoomable" />
+        <p>Log out and back into both the sender and recipient accounts to verify balance changes. Repeat the same process using the second compromised account. Combined, this results in a transfer of at least $1000 to the recipient’s account.</p>
+      </li>
+    </ol>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Outcome</h3>
+    <p>Successfully demonstrated how a race condition vulnerability can be exploited to multiply bank transfers, effectively boosting the recipient’s balance far beyond the account limits.</p>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Takeaway</h3>
+    <p>Understanding how to exploit and identify race condition vulnerabilities in web applications is critically important for cybersecurity professionals because these flaws can lead to severe financial and data breaches if left unaddressed. Race conditions occur when a system's behavior depends on the sequence or timing of uncontrollable events, allowing attackers to manipulate processes by sending multiple requests simultaneously. In the context of banking or financial systems, this can result in unauthorized money transfers, duplication of transactions, or other fraudulent activities. By learning how these attacks are carried out—such as using tools like BurpSuite to overload a server with repeated POST requests—security analysts and penetration testers can better identify, test, and report such vulnerabilities, ultimately helping organizations fix the issues before malicious actors can exploit them in the real world.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-12 text-sm text-[#8b949e]">
+    <h2 class="text-xl mb-4">Connect With Me</h2>
+    <div class="flex justify-center gap-6">
+      <a href="https://www.linkedin.com/in/joseph-n-b4a967284/" target="_blank">
+        <img src="linkedin.png" alt="LinkedIn" class="h-8" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        overlay.innerHTML = `<img src="${img.src}" alt="zoomed image" />`;
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', () => {
+          overlay.remove();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
