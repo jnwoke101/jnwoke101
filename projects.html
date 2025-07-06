@@ -238,6 +238,45 @@
 
   <!-- Carousel & Search Scripts -->
   <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("projectSearch");
+  const suggestionBox = document.getElementById("suggestions");
+
+  searchInput.addEventListener("input", function (e) {
+    const input = e.target.value.toLowerCase();
+    suggestionBox.innerHTML = "";
+
+    if (!input.trim()) {
+      suggestionBox.classList.add("hidden");
+      return;
+    }
+
+    const matches = projects.filter(p => p.title.toLowerCase().includes(input));
+
+    if (matches.length > 0) {
+      suggestionBox.classList.remove("hidden");
+      matches.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = p.title;
+        li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-[#0d1117] cursor-pointer";
+        li.onclick = () => {
+          window.location.href = p.url;
+        };
+        suggestionBox.appendChild(li);
+      });
+    } else {
+      suggestionBox.classList.add("hidden");
+    }
+  });
+
+  // Close suggestions when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
+      suggestionBox.classList.add("hidden");
+    }
+  });
+});
+
     // Carousel
     document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
       const track = wrapper.querySelector('.carousel-track');
