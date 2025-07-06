@@ -340,11 +340,16 @@ document.addEventListener("DOMContentLoaded", () => {
         project.title.toLowerCase().includes(input.toLowerCase())
       );
 
-      document.getElementById("projectSearch").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault(); // This stops the Enter key from doing anything
+document.getElementById("projectSearch").addEventListener("keydown", function (e) {
+  const suggestions = document.getElementById("suggestions");
+  const isVisible = !suggestions.classList.contains("hidden");
+  const hasItems = suggestions.children.length > 0;
+
+  if (e.key === "Enter" && isVisible && hasItems) {
+    e.preventDefault(); // Disable Enter only if suggestions are shown
   }
 });
+
 
 
       matches.forEach(project => {
