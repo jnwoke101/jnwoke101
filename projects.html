@@ -149,103 +149,90 @@
       class="w-1/2 px-4 py-2 border border-[#2ac3de] bg-[#161b22] text-[#c9d1d9] placeholder-[#8b949e] rounded"
       autocomplete="off"
     />
-    <ul id="suggestions" class="bg-[#161b22] text-[#c9d1d9] w-1/2 mt-2 rounded shadow-lg hidden max-h-48 overflow-y-auto z-50 border border-[#2ac3de]"></ul>
+    <ul id="suggestions" class="bg-[#161b22] text-[#c9d1d9] w-1/2 mt-2 rounded shadow-lg hidden max-h-48 overflow-y-auto z-50 border border-[#2ac3de] absolute"></ul>
   </div>
 
-  <!-- Scripts -->
-  <script>
-    const projects = [
-      { title: "Smart Firewall", url: "smart-firewall.html" },
-      { title: "Pi IDS", url: "pi-ids.html" },
-      { title: "Threat Feed", url: "threat-feed.html" },
-      { title: "Home Network", url: "home-network.html" },
-      { title: "Home SOC", url: "home-soc.html" },
-      { title: "Log Tracker", url: "log-tracker.html" },
-      { title: "Race Condition Vulnerability", url: "ctf1.html" },
-      { title: "THM Blue", url: "thm-blue.html" },
-      { title: "XSS Acme", url: "xss-acme.html" },
-      { title: "SQL Bug", url: "sql-bug.html" },
-      { title: "RCE Report", url: "rce-report.html" },
-      { title: "Burp Exploit", url: "burp-exploit.html" },
-      { title: "Net Mon", url: "net-mon.html" },
-      { title: "Py Auto", url: "py-auto.html" },
-      { title: "Log Parse", url: "log-parse.html" },
-      { title: "Cloud Sync", url: "cloud-sync.html" },
-      { title: "Threat Intel", url: "threat-intel.html" },
-      { title: "DNS Watch", url: "dns-watch.html" }
-    ];
+  <!-- Project Sections -->
+  <section class="max-w-7xl mx-auto pt-8">
+    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Projects</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left">&#9664;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="smart-firewall.html">Smart Firewall</a></div>
+            <div class="circle"><a href="pi-ids.html">Pi IDS</a></div>
+            <div class="circle"><a href="threat-feed.html">Threat Feed</a></div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="home-network.html">Home Network</a></div>
+            <div class="circle"><a href="home-soc.html">Home SOC</a></div>
+            <div class="circle"><a href="log-tracker.html">Log Tracker</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow right">&#9654;</button>
+    </div>
+  </section>
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const searchInput = document.getElementById("projectSearch");
-      const suggestionBox = document.getElementById("suggestions");
+  <section class="max-w-7xl mx-auto">
+    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">CTFs & Bug Bounties</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left">&#9664;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="ctf1.html">Race Condition Vulnerability</a></div>
+            <div class="circle"><a href="thm-blue.html">THM Blue</a></div>
+            <div class="circle"><a href="xss-acme.html">XSS Acme</a></div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="sql-bug.html">SQL Bug</a></div>
+            <div class="circle"><a href="rce-report.html">RCE Report</a></div>
+            <div class="circle"><a href="burp-exploit.html">Burp Exploit</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow right">&#9654;</button>
+    </div>
+  </section>
 
-      searchInput.addEventListener("input", function (e) {
-        const input = e.target.value.toLowerCase();
-        suggestionBox.innerHTML = "";
+  <section class="max-w-7xl mx-auto">
+    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Other Projects</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left">&#9664;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="net-mon.html">Net Mon</a></div>
+            <div class="circle"><a href="py-auto.html">Py Auto</a></div>
+            <div class="circle"><a href="log-parse.html">Log Parse</a></div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="circle-grid">
+            <div class="circle"><a href="cloud-sync.html">Cloud Sync</a></div>
+            <div class="circle"><a href="threat-intel.html">Threat Intel</a></div>
+            <div class="circle"><a href="dns-watch.html">DNS Watch</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow right">&#9654;</button>
+    </div>
+  </section>
 
-        if (!input.trim()) {
-          suggestionBox.classList.add("hidden");
-          return;
-        }
-
-        const matches = projects.filter(p => p.title.toLowerCase().includes(input));
-
-        if (matches.length > 0) {
-          suggestionBox.classList.remove("hidden");
-          matches.forEach(p => {
-            const li = document.createElement("li");
-            li.textContent = p.title;
-            li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-[#0d1117] cursor-pointer";
-            li.onclick = () => {
-              window.location.href = p.url;
-            };
-            suggestionBox.appendChild(li);
-          });
-        } else {
-          suggestionBox.classList.add("hidden");
-        }
-      });
-
-      searchInput.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          return false;
-        }
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
-          suggestionBox.classList.add("hidden");
-        }
-      });
-    });
-
-    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
-      const track = wrapper.querySelector('.carousel-track');
-      const slides = wrapper.querySelectorAll('.carousel-slide');
-      const btnLeft = wrapper.querySelector('.carousel-arrow.left');
-      const btnRight = wrapper.querySelector('.carousel-arrow.right');
-      let index = 0;
-
-      function updateSlide() {
-        track.style.transform = `translateX(-${index * 100}%)`;
-      }
-
-      btnLeft.addEventListener('click', () => {
-        index = (index === 0) ? slides.length - 1 : index - 1;
-        updateSlide();
-      });
-
-      btnRight.addEventListener('click', () => {
-        index = (index + 1) % slides.length;
-        updateSlide();
-      });
-
-      setInterval(() => {
-        index = (index + 1) % slides.length;
-        updateSlide();
-      }, 10000);
-    });
-  </script>
+  <!-- Footer -->
+  <footer class="text-center py-12 text-sm text-[#8b949e]">
+    <h2 class="text-xl mb-4">Connect With Me</h2>
+    <div class="flex justify-center gap-6">
+      <a href="https://www.linkedin.com/in/joseph-n-b4a967284/" target="_blank">
+        <img src="linkedin.png" alt="LinkedIn" class="h-8" />
+      </a>
+    </div>
+  </footer>
 </body>
 </html>
