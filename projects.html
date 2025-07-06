@@ -118,19 +118,19 @@
       align-items: center;
     }
 
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #2ac3de;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      font-size: 2rem;
-      z-index: 10;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 10px #2ac3de;
-    }
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;     /* Remove background */
+  border: none;                /* Remove border */
+  padding: 0;                  /* Remove padding */
+  font-size: 2rem;
+  color: #2ac3de;              /* Set arrow color */
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: none;            /* Remove glow effect */
+}
 
     .carousel-arrow.left {
       left: 1rem;
