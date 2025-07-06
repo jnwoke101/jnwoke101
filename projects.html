@@ -311,7 +311,12 @@
         suggestionBox.appendChild(li);
       });
 
-      suggestionBox.classList.toggle("hidden", matches.length === 0);
+if (matches.length > 0) {
+  suggestionBox.classList.remove("hidden");
+} else {
+  suggestionBox.classList.add("hidden");
+}
+
     }
 
     document.getElementById("projectSearch").addEventListener("keypress", function (e) {
