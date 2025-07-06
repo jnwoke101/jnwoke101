@@ -118,7 +118,6 @@
     }
   </style>
 </head>
-
 <body class="bg-[#0d1117] text-[#c9d1d9]">
   <!-- Header -->
   <section class="text-center py-12">
@@ -143,141 +142,84 @@
 
   <!-- 🔍 Search Bar -->
   <div class="flex flex-col items-center mb-12">
-<input
-  type="text"
-  id="projectSearch"
-  placeholder="Search projects..."
-  class="w-1/2 px-4 py-2 border border-[#2ac3de] bg-[#161b22] text-[#c9d1d9] placeholder-[#8b949e] rounded"
-  autocomplete="off"
-/>
-<ul id="suggestions" class="bg-[#161b22] text-[#c9d1d9] w-1/2 mt-2 rounded shadow-lg hidden max-h-48 overflow-y-auto z-50 border border-[#2ac3de]"></ul>
+    <input
+      type="text"
+      id="projectSearch"
+      placeholder="Search projects..."
+      class="w-1/2 px-4 py-2 border border-[#2ac3de] bg-[#161b22] text-[#c9d1d9] placeholder-[#8b949e] rounded"
+      autocomplete="off"
+    />
+    <ul id="suggestions" class="bg-[#161b22] text-[#c9d1d9] w-1/2 mt-2 rounded shadow-lg hidden max-h-48 overflow-y-auto z-50 border border-[#2ac3de]"></ul>
   </div>
 
-  <!-- Project Sections -->
-  <section class="max-w-7xl mx-auto pt-8">
-    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Home Projects</h2>
-    <div class="carousel-wrapper">
-      <button class="carousel-arrow left">&#9664;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="circle-grid">
-            <div class="circle"><a href="smart-firewall.html">Smart Firewall</a></div>
-            <div class="circle"><a href="pi-ids.html">Pi IDS</a></div>
-            <div class="circle"><a href="threat-feed.html">Threat Feed</a></div>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <div class="circle-grid">
-            <div class="circle"><a href="home-network.html">Home Network</a></div>
-            <div class="circle"><a href="home-soc.html">Home SOC</a></div>
-            <div class="circle"><a href="log-tracker.html">Log Tracker</a></div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-arrow right">&#9654;</button>
-    </div>
-  </section>
-
-  <section class="max-w-7xl mx-auto">
-    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">CTFs & Bug Bounties</h2>
-    <div class="carousel-wrapper">
-      <button class="carousel-arrow left">&#9664;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="circle-grid">
-            <div class="circle"><a href="ctf1.html">Race Condition Vulnerability</a></div>
-            <div class="circle"><a href="thm-blue.html">THM Blue</a></div>
-            <div class="circle"><a href="xss-acme.html">XSS Acme</a></div>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <div class="circle-grid">
-            <div class="circle"><a href="sql-bug.html">SQL Bug</a></div>
-            <div class="circle"><a href="rce-report.html">RCE Report</a></div>
-            <div class="circle"><a href="burp-exploit.html">Burp Exploit</a></div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-arrow right">&#9654;</button>
-    </div>
-  </section>
-
-  <section class="max-w-7xl mx-auto">
-    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Other Projects</h2>
-    <div class="carousel-wrapper">
-      <button class="carousel-arrow left">&#9664;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="circle-grid">
-            <div class="circle"><a href="net-mon.html">Net Mon</a></div>
-            <div class="circle"><a href="py-auto.html">Py Auto</a></div>
-            <div class="circle"><a href="log-parse.html">Log Parse</a></div>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <div class="circle-grid">
-            <div class="circle"><a href="cloud-sync.html">Cloud Sync</a></div>
-            <div class="circle"><a href="threat-intel.html">Threat Intel</a></div>
-            <div class="circle"><a href="dns-watch.html">DNS Watch</a></div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-arrow right">&#9654;</button>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center py-12 text-sm text-[#8b949e]">
-    <h2 class="text-xl mb-4">Connect With Me</h2>
-    <div class="flex justify-center gap-6">
-      <a href="https://www.linkedin.com/in/joseph-n-b4a967284/" target="_blank">
-        <img src="linkedin.png" alt="LinkedIn" class="h-8" />
-      </a>
-    </div>
-  </footer>
-
-  <!-- Carousel & Search Scripts -->
+  <!-- Scripts -->
   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("projectSearch");
-  const suggestionBox = document.getElementById("suggestions");
+    const projects = [
+      { title: "Smart Firewall", url: "smart-firewall.html" },
+      { title: "Pi IDS", url: "pi-ids.html" },
+      { title: "Threat Feed", url: "threat-feed.html" },
+      { title: "Home Network", url: "home-network.html" },
+      { title: "Home SOC", url: "home-soc.html" },
+      { title: "Log Tracker", url: "log-tracker.html" },
+      { title: "Race Condition Vulnerability", url: "ctf1.html" },
+      { title: "THM Blue", url: "thm-blue.html" },
+      { title: "XSS Acme", url: "xss-acme.html" },
+      { title: "SQL Bug", url: "sql-bug.html" },
+      { title: "RCE Report", url: "rce-report.html" },
+      { title: "Burp Exploit", url: "burp-exploit.html" },
+      { title: "Net Mon", url: "net-mon.html" },
+      { title: "Py Auto", url: "py-auto.html" },
+      { title: "Log Parse", url: "log-parse.html" },
+      { title: "Cloud Sync", url: "cloud-sync.html" },
+      { title: "Threat Intel", url: "threat-intel.html" },
+      { title: "DNS Watch", url: "dns-watch.html" }
+    ];
 
-  searchInput.addEventListener("input", function (e) {
-    const input = e.target.value.toLowerCase();
-    suggestionBox.innerHTML = "";
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.getElementById("projectSearch");
+      const suggestionBox = document.getElementById("suggestions");
 
-    if (!input.trim()) {
-      suggestionBox.classList.add("hidden");
-      return;
-    }
+      searchInput.addEventListener("input", function (e) {
+        const input = e.target.value.toLowerCase();
+        suggestionBox.innerHTML = "";
 
-    const matches = projects.filter(p => p.title.toLowerCase().includes(input));
+        if (!input.trim()) {
+          suggestionBox.classList.add("hidden");
+          return;
+        }
 
-    if (matches.length > 0) {
-      suggestionBox.classList.remove("hidden");
-      matches.forEach(p => {
-        const li = document.createElement("li");
-        li.textContent = p.title;
-        li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-[#0d1117] cursor-pointer";
-        li.onclick = () => {
-          window.location.href = p.url;
-        };
-        suggestionBox.appendChild(li);
+        const matches = projects.filter(p => p.title.toLowerCase().includes(input));
+
+        if (matches.length > 0) {
+          suggestionBox.classList.remove("hidden");
+          matches.forEach(p => {
+            const li = document.createElement("li");
+            li.textContent = p.title;
+            li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-[#0d1117] cursor-pointer";
+            li.onclick = () => {
+              window.location.href = p.url;
+            };
+            suggestionBox.appendChild(li);
+          });
+        } else {
+          suggestionBox.classList.add("hidden");
+        }
       });
-    } else {
-      suggestionBox.classList.add("hidden");
-    }
-  });
 
-  // Close suggestions when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
-      suggestionBox.classList.add("hidden");
-    }
-  });
-});
+      searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          return false;
+        }
+      });
 
-    // Carousel
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
+          suggestionBox.classList.add("hidden");
+        }
+      });
+    });
+
     document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
       const track = wrapper.querySelector('.carousel-track');
       const slides = wrapper.querySelectorAll('.carousel-slide');
@@ -303,85 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
         index = (index + 1) % slides.length;
         updateSlide();
       }, 10000);
-    });
-
-    // Search Suggestions
-    const projects = [
-      { title: "Smart Firewall", url: "smart-firewall.html" },
-      { title: "Pi IDS", url: "pi-ids.html" },
-      { title: "Threat Feed", url: "threat-feed.html" },
-      { title: "Home Network", url: "home-network.html" },
-      { title: "Home SOC", url: "home-soc.html" },
-      { title: "Log Tracker", url: "log-tracker.html" },
-      { title: "Race Condition Vulnerability", url: "ctf1.html" },
-      { title: "THM Blue", url: "thm-blue.html" },
-      { title: "XSS Acme", url: "xss-acme.html" },
-      { title: "SQL Bug", url: "sql-bug.html" },
-      { title: "RCE Report", url: "rce-report.html" },
-      { title: "Burp Exploit", url: "burp-exploit.html" },
-      { title: "Net Mon", url: "net-mon.html" },
-      { title: "Py Auto", url: "py-auto.html" },
-      { title: "Log Parse", url: "log-parse.html" },
-      { title: "Cloud Sync", url: "cloud-sync.html" },
-      { title: "Threat Intel", url: "threat-intel.html" },
-      { title: "DNS Watch", url: "dns-watch.html" },
-    ];
-
-    function showSuggestions(input) {
-      const suggestionBox = document.getElementById("suggestions");
-      suggestionBox.innerHTML = "";
-
-      if (!input.trim()) {
-        suggestionBox.classList.add("hidden");
-        return;
-      }
-
-      const matches = projects.filter(project =>
-        project.title.toLowerCase().includes(input.toLowerCase())
-      );
-
-document.getElementById("projectSearch").addEventListener("keydown", function (e) {
-  const suggestions = document.getElementById("suggestions");
-  const isVisible = !suggestions.classList.contains("hidden");
-  const hasItems = suggestions.children.length > 0;
-
-  if (e.key === "Enter" && isVisible && hasItems) {
-    e.preventDefault(); // Disable Enter only if suggestions are shown
-  }
-});
-
-
-
-      matches.forEach(project => {
-        const li = document.createElement("li");
-        li.textContent = project.title;
-        li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-white cursor-pointer";
-        li.onclick = () => {
-          window.location.href = project.url;
-        };
-        suggestionBox.appendChild(li);
-      });
-
-if (matches.length > 0) {
-  suggestionBox.classList.remove("hidden");
-} else {
-  suggestionBox.classList.add("hidden");
-}
-
-    }
-
-    document.getElementById("projectSearch").addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        const input = e.target.value.toLowerCase();
-        const match = projects.find(p => p.title.toLowerCase().includes(input));
-        if (match) window.location.href = match.url;
-      }
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
-        document.getElementById("suggestions").classList.add("hidden");
-      }
     });
   </script>
 </body>
