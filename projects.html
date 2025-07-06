@@ -229,7 +229,83 @@
       <button class="carousel-arrow right">&#9654;</button>
     </div>
   </section>
+  <!-- 🔍 Search Bar -->
+  <div class="flex flex-col items-center mb-12 relative">
+    <input
+      type="text"
+      id="projectSearch"
+      placeholder="Search projects..."
+      class="w-1/2 px-4 py-2 border border-[#2ac3de] bg-[#161b22] text-[#c9d1d9] placeholder-[#8b949e] rounded"
+      autocomplete="off"
+    />
+    <ul id="suggestions" class="absolute top-full bg-[#161b22] text-[#c9d1d9] w-1/2 mt-2 rounded shadow-lg hidden max-h-48 overflow-y-auto z-50 border border-[#2ac3de]"></ul>
+  </div>
 
+  <!-- JavaScript -->
+  <script>
+    const searchInput = document.getElementById("projectSearch");
+    const suggestionBox = document.getElementById("suggestions");
+
+    const projects = [
+      { title: "Smart Firewall", url: "smart-firewall.html" },
+      { title: "Pi IDS", url: "pi-ids.html" },
+      { title: "Threat Feed", url: "threat-feed.html" },
+      { title: "Home Network", url: "home-network.html" },
+      { title: "Home SOC", url: "home-soc.html" },
+      { title: "Log Tracker", url: "log-tracker.html" },
+      { title: "Race Condition Vulnerability", url: "ctf1.html" },
+      { title: "THM Blue", url: "thm-blue.html" },
+      { title: "XSS Acme", url: "xss-acme.html" },
+      { title: "SQL Bug", url: "sql-bug.html" },
+      { title: "RCE Report", url: "rce-report.html" },
+      { title: "Burp Exploit", url: "burp-exploit.html" },
+      { title: "Net Mon", url: "net-mon.html" },
+      { title: "Py Auto", url: "py-auto.html" },
+      { title: "Log Parse", url: "log-parse.html" },
+      { title: "Cloud Sync", url: "cloud-sync.html" },
+      { title: "Threat Intel", url: "threat-intel.html" },
+      { title: "DNS Watch", url: "dns-watch.html" },
+    ];
+
+    searchInput.addEventListener("input", function (e) {
+      const input = e.target.value.toLowerCase();
+      suggestionBox.innerHTML = "";
+
+      if (!input.trim()) {
+        suggestionBox.classList.add("hidden");
+        return;
+      }
+
+      const matches = projects.filter(p => p.title.toLowerCase().includes(input));
+
+      if (matches.length > 0) {
+        suggestionBox.classList.remove("hidden");
+        matches.forEach(p => {
+          const li = document.createElement("li");
+          li.textContent = p.title;
+          li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-[#0d1117] cursor-pointer";
+          li.onclick = () => {
+            window.location.href = p.url;
+          };
+          suggestionBox.appendChild(li);
+        });
+      } else {
+        suggestionBox.classList.add("hidden");
+      }
+    });
+
+    searchInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
+        suggestionBox.classList.add("hidden");
+      }
+    });
+  </script>
   <!-- Footer -->
   <footer class="text-center py-12 text-sm text-[#8b949e]">
     <h2 class="text-xl mb-4">Connect With Me</h2>
@@ -241,3 +317,5 @@
   </footer>
 </body>
 </html>
+
+
