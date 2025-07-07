@@ -77,9 +77,9 @@
     <h1 class="text-5xl font-bold text-[#2ac3de]">JOSEPH NWOKE</h1>
     <p class="text-lg text-[#2ac3de] mt-2">Cybersecurity Analyst | PenTester | IT Professional</p>
     <div class="mt-6 space-x-4">
-      <a href="Home/index.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">About Me</button></a>
-      <a href="Projects/projects.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Projects</button></a>
-      <a href="Education_Career/education_and_career.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Education</button></a>
+      <a href="/Home/index.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">About Me</button></a>
+      <a href="/Projects/projects.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Projects</button></a>
+      <a href="/Education_Career/education_and_career.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Education</button></a>
     </div>
   </section>
 
@@ -97,28 +97,28 @@
     <ul class="list-disc list-inside">
       <li>BurpSuite: Used to intercept and repeat POST requests to exploit a race condition vulnerability in the bank’s web server.</li>
     </ul>
-    <img src="Logos/burpsuite-logo.png" alt="BurpSuite Logo" class="h-12 mt-2" />
+    <img src="/Logos/burpsuite-logo.png" alt="BurpSuite Logo" class="h-12 mt-2" />
 
     <h3 class="text-xl text-[#2ac3de] mt-6">Steps Taken</h3>
     <ol class="list-decimal list-inside space-y-4">
       <li>
         <strong>Setup and Access</strong><br/>
-        <img src="Projects/CTF1/Images/THM-race-condition-ctf-1.png" alt="Access" class="zoomable" />
+        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-1.png" alt="Access" class="zoomable" />
         <p>Open BurpSuite's browser and log in using one victim’s credentials in order to transfer the money. Enable the Intercept feature to capture outgoing POST requests.</p>
       </li>
       <li>
         <strong>Capturing and Preparing the POST Request</strong><br/>
-        <img src="Projects/CTF1/Images/THM-race-condition-ctf-2.png" alt="Capture" class="zoomable" />
+        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-2.png" alt="Capture" class="zoomable" />
         <p>Identify the POST request that handles the money transfer. Forward the request, then locate it in the HTTP history under the Proxy tab. Right-click the POST action and send it to the Repeater.</p>
       </li>
       <li>
         <strong>Exploiting the Race Condition</strong><br/>
-        <img src="Projects/CTF1/Images/THM-race-condition-ctf-3.png" alt="Exploit" class="zoomable" />
+        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-3.png" alt="Exploit" class="zoomable" />
         <p>In the Repeater tab, create a new group and add the money transfer request to it. Duplicate the tab 50 times to simulate multiple simultaneous transactions. Send the requests in parallel to overload the server and exploit the race condition.</p>
       </li>
       <li>
         <strong>Verification</strong><br/>
-        <img src="Projects/CTF1/Images/THM-race-condition-ctf-4.png" alt="Verify" class="zoomable" />
+        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-4.png" alt="Verify" class="zoomable" />
         <p>Log out and back into both the sender and recipient accounts to verify balance changes. Repeat the same process using the second compromised account. Combined, this results in a transfer of at least $1000 to the recipient’s account.</p>
       </li>
     </ol>
@@ -135,7 +135,7 @@
     <h2 class="text-xl mb-4">Connect With Me</h2>
     <div class="flex justify-center gap-6">
       <a href="https://www.linkedin.com/in/joseph-n-b4a967284/" target="_blank">
-        <img src="Logos/linkedin.png" alt="LinkedIn" class="h-8" />
+        <img src="/Logos/linkedin.png" alt="LinkedIn" class="h-8" />
       </a>
     </div>
   </footer>
