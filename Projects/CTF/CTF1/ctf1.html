@@ -89,7 +89,7 @@
     <h2 class="text-3xl text-[#2ac3de] mb-4">CTF Overview: Exploiting a Race Condition Vulnerability in a Bank's Web Server</h2>
     <h3 class="text-xl text-[#2ac3de] mt-6">Objective</h3>
     <ul class="list-disc list-inside">
-      <li>Simulate a scenario where I, acting as an attacker, attempt to increase the balance of one target bank account to at least $1000.</li>
+      <li>Simulate a scenario where I, acting as an attacker, attempt to increase the balance of one target bank account to at     least $1000.</li>
       <li>Each of the three accounts starts with $100.</li>
       <li>In a real-world situation, one account could be mine (or someone I'm helping), and I’ve gained access to the other two via phishing or other credential theft methods.</li>
     </ul>
@@ -104,22 +104,22 @@
     <ol class="list-decimal list-inside space-y-4">
       <li>
         <strong>Setup and Access</strong><br/>
-        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-1.png" alt="Access" class="zoomable" />
+        <img src="/Projects/CTF/CTF1/Images/THM-race-condition-ctf-1.png" alt="Access" class="zoomable" />
         <p>Open BurpSuite's browser and log in using one victim’s credentials in order to transfer the money. Enable the Intercept feature to capture outgoing POST requests.</p>
       </li>
       <li>
         <strong>Capturing and Preparing the POST Request</strong><br/>
-        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-2.png" alt="Capture" class="zoomable" />
+        <img src="/Projects/CTF/CTF1/Images/THM-race-condition-ctf-2.png" alt="Capture" class="zoomable" />
         <p>Identify the POST request that handles the money transfer. Forward the request, then locate it in the HTTP history under the Proxy tab. Right-click the POST action and send it to the Repeater.</p>
       </li>
       <li>
         <strong>Exploiting the Race Condition</strong><br/>
-        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-3.png" alt="Exploit" class="zoomable" />
+        <img src="/Projects/CTF/CTF1/Images/THM-race-condition-ctf-3.png" alt="Exploit" class="zoomable" />
         <p>In the Repeater tab, create a new group and add the money transfer request to it. Duplicate the tab 50 times to simulate multiple simultaneous transactions. Send the requests in parallel to overload the server and exploit the race condition.</p>
       </li>
       <li>
         <strong>Verification</strong><br/>
-        <img src="/Projects/CTF1/Images/THM-race-condition-ctf-4.png" alt="Verify" class="zoomable" />
+        <img src="/Projects/CTF/CTF1/Images/THM-race-condition-ctf-4.png" alt="Verify" class="zoomable" />
         <p>Log out and back into both the sender and recipient accounts to verify balance changes. Repeat the same process using the second compromised account. Combined, this results in a transfer of at least $1000 to the recipient’s account.</p>
       </li>
     </ol>
