@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/Logos/webpage_icon.png" sizes="64x64"/> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joseph Nwoke | Secure Cloud Storage with Azure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Courier New', monospace; }
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #161b22; }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #2ac3de; border-radius: 10px; border: 2px solid #161b22;
+    }
+    .footer { margin-top: 50px; padding: 20px; }
+    .footer::before { content: ""; display: block; width: 100%; height: 2px; margin-bottom: 20px; }
+    .social-icons a { margin: 0 15px; text-decoration: none; }
+    .social-icons img { width: 30px; height: 30px; transition: opacity 0.3s; }
+    .social-icons img:hover { opacity: 0.7; }
+    .zoomable { max-width: 100%; cursor: zoom-in; display: block; margin: 2rem auto; width: 100%; max-width: 1918px; }
+    .overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85); display: flex;
+      align-items: center; justify-content: center; z-index: 1000;
+    }
+    .overlay img { max-width: 90vw; max-height: 90vh; box-shadow: 0 0 25px #2ac3de; border-radius: 8px; }
+  </style>
+</head>
+<body class="bg-[#0d1117] text-[#c9d1d9]">
+  <!-- Header -->
+  <section class="text-center py-12">
+    <h1 class="text-5xl font-bold text-[#2ac3de]">JOSEPH NWOKE</h1>
+    <p class="text-lg text-[#2ac3de] mt-2">Cybersecurity Analyst | PenTester | IT Professional</p>
+    <div class="mt-6 space-x-4">
+      <a href="/index.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">About Me</button></a>
+      <a href="/Projects/projects.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Projects</button></a>
+      <a href="/Education_Career/education_and_career.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Education & Career</button></a>
+    </div>
+  </section>
+
+  <!-- Project Overview -->
+  <section class="max-w-4xl mx-auto bg-[#161b22] p-6 rounded-lg">
+    <h2 class="text-3xl text-[#2ac3de] mb-4">Project: Secure Cloud Storage with Azure Key Vault & Encryption</h2>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Objective</h3>
+    <ul class="list-disc list-inside">
+      <li>Encrypt sensitive data at rest using Azure Key Vault and Customer-Managed Keys (CMK).</li>
+      <li>Secure data in transit with enforced HTTPS connections.</li>
+      <li>Control access with role-based access control (RBAC) using Azure AD.</li>
+      <li>Enable diagnostic logging and configure alerts for key usage and anomalies.</li>
+    </ul>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Tools Used</h3>
+    <ul class="list-disc list-inside">
+      <li>Azure Active Directory (Microsoft Entra ID)</li>
+      <li>Azure Key Vault</li>
+      <li>Azure Role-Based Access Control (RBAC)</li>
+      <li>User-Assigned Managed Identity</li>
+      <li>Azure Monitor</li>
+      <li>Kusto Query Language (KQL)</li>
+      <li>Log Analytics Workspace</li>
+    </ul>
+    <figure>
+      <img src="/Logos/azure-active-directory.png" alt="Azure AD Logo" class="h-12 mt-2" />
+      <figcaption>Azure Active Directory / Microsoft Entra ID</figcaption>
+    </figure>
+    <figure>
+      <img src="/Logos/azure_key_vault.png" alt="Azure Key Vault Logo" class="h-12 mt-2" />
+      <figcaption>Azure Key Vault</figcaption>
+    </figure>
+    <figure>
+      <img src="/Logos/azure-rbac.png" alt="RBAC Logo" class="h-12 mt-2" />
+      <figcaption>Azure Role-Based Access Control</figcaption>
+    </figure>
+    <figure>
+      <img src="/Logos/azure-managed-identity.png" alt="Managed Identity Logo" class="h-12 mt-2" />
+      <figcaption>User-Assigned Managed Identity</figcaption>
+    </figure>
+    <figure>
+      <img src="/Logos/azure_monitor_logo.png" alt="Azure Monitor Logo" class="h-12 mt-2" />
+      <figcaption>Azure Monitor</figcaption>
+    </figure>
+    <figure>
+      <img src="/Logos/azure-kql-logo.png" alt="KQL Logo" class="h-12 mt-2" />
+      <figcaption>Kusto Query Language (KQL)</figcaption>
+    </figure>
+    <figure>
+      <img src="/Logos/azure_log_analytics.png" alt="Log Analytics Logo" class="h-12 mt-2" />
+      <figcaption>Log Analytics Workspace</figcaption>
+    </figure>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Steps Taken</h3>
+    <ol class="list-decimal list-inside space-y-4">
+      <li><strong>Identity Setup:</strong><br/>Created Azure AD users and assigned them to role-specific security groups. Used RBAC to enforce the principle of least privilege for access to both Key Vault and the Storage Account.</li>
+      <li><strong>Key Vault and Encryption Configuration:</strong><br/>Deployed Azure Key Vault with soft delete and purge protection enabled. Generated a CMK (Customer-Managed Key) and created a User-Assigned Managed Identity to enable the Storage Account to access the key securely.</li>
+      <li><strong>Storage Deployment:</strong><br/>Created a General Purpose v2 Storage Account with HTTPS enforced. Linked the encryption settings to the Key Vault key using the managed identity, enabling encryption at rest with CMK.</li>
+      <li><strong>Monitoring Configuration:</strong><br/>Enabled classic diagnostic settings on both the Storage Account and Key Vault. Configured logs to be sent to Log Analytics Workspace.</li>
+      <li><strong>Alerting and Threat Detection:</strong><br/>Created alerts using Azure Monitor for key usage, failed access attempts, high-volume blob downloads, and off-hours access by writing custom KQL queries. These alerts were tied to an action group for real-time email notifications.</li>
+    </ol>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Outcome</h3>
+    <p>This project successfully demonstrates how to secure cloud-based storage using Azure-native tools with full encryption, monitoring, and role-based access. All configurations followed Microsoft security best practices.</p>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Takeaway</h3>
+    <p>This project reflects a real-world security implementation involving encryption at rest, managed identities, RBAC, and alerting via Azure-native monitoring tools. It showcases the ability to combine infrastructure security with operational visibility using Microsoft’s cloud ecosystem.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-12 text-sm text-[#8b949e]">
+    <h2 class="text-xl mb-4">Connect With Me</h2>
+    <div class="flex justify-center gap-6">
+      <a href="https://www.linkedin.com/in/joseph-n-b4a967284/" target="_blank">
+        <img src="/Logos/linkedin.png" alt="LinkedIn" class="h-8" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        overlay.innerHTML = `<img src="${img.src}" alt="zoomed image" />`;
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', () => overlay.remove());
+      });
+    });
+  </script>
+</body>
+</html>
