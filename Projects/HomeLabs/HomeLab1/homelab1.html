@@ -40,73 +40,65 @@
   </section>
 
   <!-- Project Overview -->
-  <section class="max-w-4xl mx-auto bg-[#161b22] p-6 rounded-lg">
+ <section class="max-w-6xl mx-auto bg-[#161b22] p-6 rounded-lg">
     <h2 class="text-3xl text-[#2ac3de] mb-4">Project: Secure Cloud Storage with Azure Key Vault & Encryption</h2>
-
     <h3 class="text-xl text-[#2ac3de] mt-6">Objective</h3>
     <ul class="list-disc list-inside">
-      <li>Encrypt sensitive data at rest using Azure Key Vault and Customer-Managed Keys (CMK).</li>
-      <li>Secure data in transit with enforced HTTPS connections.</li>
-      <li>Control access with role-based access control (RBAC) using Azure AD.</li>
-      <li>Enable diagnostic logging and configure alerts for key usage and anomalies.</li>
+      <li>Encrypt sensitive data at rest using Customer-Managed Keys (CMK) with Azure Key Vault.</li>
+      <li>Enforce secure data in transit using HTTPS and TLS 1.2+.</li>
+      <li>Implement least-privilege access using Azure Role-Based Access Control (RBAC).</li>
+      <li>Enable diagnostic logging and trigger alerts for key access anomalies.</li>
     </ul>
 
     <h3 class="text-xl text-[#2ac3de] mt-6">Tools Used</h3>
-    <ul class="list-disc list-inside">
-      <li>Azure Active Directory (Microsoft Entra ID)</li>
-      <li>Azure Key Vault</li>
-      <li>Azure Role-Based Access Control (RBAC)</li>
-      <li>User-Assigned Managed Identity</li>
-      <li>Azure Monitor</li>
-      <li>Kusto Query Language (KQL)</li>
-      <li>Log Analytics Workspace</li>
-    </ul>
-    <figure>
-      <img src="/Logos/azure-active-directory.png" alt="Azure AD Logo" class="h-12 mt-2" />
-      <figcaption>Azure Active Directory / Microsoft Entra ID</figcaption>
-    </figure>
-    <figure>
-      <img src="/Logos/azure_key_vault.png" alt="Azure Key Vault Logo" class="h-12 mt-2" />
-      <figcaption>Azure Key Vault</figcaption>
-    </figure>
-    <figure>
-      <img src="/Logos/azure-rbac.png" alt="RBAC Logo" class="h-12 mt-2" />
-      <figcaption>Azure Role-Based Access Control</figcaption>
-    </figure>
-    <figure>
-      <img src="/Logos/azure-managed-identity.png" alt="Managed Identity Logo" class="h-12 mt-2" />
-      <figcaption>User-Assigned Managed Identity</figcaption>
-    </figure>
-    <figure>
-      <img src="/Logos/azure_monitor_logo.png" alt="Azure Monitor Logo" class="h-12 mt-2" />
-      <figcaption>Azure Monitor</figcaption>
-    </figure>
-    <figure>
-      <img src="/Logos/azure-kql-logo.png" alt="KQL Logo" class="h-12 mt-2" />
-      <figcaption>Kusto Query Language (KQL)</figcaption>
-    </figure>
-    <figure>
-      <img src="/Logos/azure_log_analytics.png" alt="Log Analytics Logo" class="h-12 mt-2" />
-      <figcaption>Log Analytics Workspace</figcaption>
-    </figure>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-center mt-4">
+      <figure>
+        <img src="/Logos/azure-active-directory.png" alt="Azure Active Directory Logo" class="mx-auto h-12" />
+        <figcaption>Azure Active Directory (Microsoft Entra ID)</figcaption>
+      </figure>
+      <figure>
+        <img src="/Logos/azure_key_vault.png" alt="Azure Key Vault Logo" class="mx-auto h-12" />
+        <figcaption>Azure Key Vault</figcaption>
+      </figure>
+      <figure>
+        <img src="/Logos/azure-rbac.png" alt="RBAC Logo" class="mx-auto h-12" />
+        <figcaption>Role-Based Access Control (RBAC)</figcaption>
+      </figure>
+      <figure>
+        <img src="/Logos/azure-managed-identity.png" alt="Managed Identity Logo" class="mx-auto h-12" />
+        <figcaption>User-Assigned Managed Identity</figcaption>
+      </figure>
+      <figure>
+        <img src="/Logos/azure_monitor_logo.png" alt="Azure Monitor Logo" class="mx-auto h-12" />
+        <figcaption>Azure Monitor</figcaption>
+      </figure>
+      <figure>
+        <img src="/Logos/azure-kql-logo.png" alt="KQL Logo" class="mx-auto h-12" />
+        <figcaption>Kusto Query Language (KQL)</figcaption>
+      </figure>
+      <figure>
+        <img src="/Logos/azure_log_analytics.png" alt="Log Analytics Logo" class="mx-auto h-12" />
+        <figcaption>Log Analytics Workspace</figcaption>
+      </figure>
+    </div>
 
     <h3 class="text-xl text-[#2ac3de] mt-6">Steps Taken</h3>
     <ol class="list-decimal list-inside space-y-4">
-      <li><strong>Identity Setup:</strong><br/>Created Azure AD users and assigned them to role-specific security groups. Used RBAC to enforce the principle of least privilege for access to both Key Vault and the Storage Account.</li>
-      <li><strong>Key Vault and Encryption Configuration:</strong><br/>Deployed Azure Key Vault with soft delete and purge protection enabled. Generated a CMK (Customer-Managed Key) and created a User-Assigned Managed Identity to enable the Storage Account to access the key securely.</li>
-      <li><strong>Storage Deployment:</strong><br/>Created a General Purpose v2 Storage Account with HTTPS enforced. Linked the encryption settings to the Key Vault key using the managed identity, enabling encryption at rest with CMK.</li>
-      <li><strong>Monitoring Configuration:</strong><br/>Enabled classic diagnostic settings on both the Storage Account and Key Vault. Configured logs to be sent to Log Analytics Workspace.</li>
-      <li><strong>Alerting and Threat Detection:</strong><br/>Created alerts using Azure Monitor for key usage, failed access attempts, high-volume blob downloads, and off-hours access by writing custom KQL queries. These alerts were tied to an action group for real-time email notifications.</li>
+      <li><strong>User and Identity Setup:</strong> Created user accounts for IT, HR, and executives. Grouped users into Azure AD security groups and applied appropriate roles through RBAC for granular access.</li>
+      <li><strong>Key Vault Configuration:</strong> Deployed a secure Key Vault with soft-delete and purge protection enabled. Created a CMK (StorageEncryptionKey) and assigned a user-assigned managed identity access to it with 'Get', 'Wrap', and 'Unwrap' permissions.</li>
+      <li><strong>Managed Identity Deployment:</strong> Created a user-assigned managed identity (StorageEncryptionIdentity) and allowed it access to the key vault for encryption operations.</li>
+      <li><strong>Storage Account Setup:</strong> Provisioned a Storage Account (bldynstorage) in East US with HTTPS-only access, enabled blob/file encryption using CMK from the Key Vault, and applied the managed identity.</li>
+      <li><strong>Logging and Monitoring:</strong> Enabled diagnostic settings for the storage account and Key Vault to forward logs to a Log Analytics Workspace. Categories included audit logs and key usage.</li>
+      <li><strong>Alerting:</strong> Created alert rules in Azure Monitor using KQL queries to detect anomalies such as failed access attempts or excessive key operations. Alerts were tied to an Action Group to send email notifications.</li>
     </ol>
 
     <h3 class="text-xl text-[#2ac3de] mt-6">Outcome</h3>
-    <p>This project successfully demonstrates how to secure cloud-based storage using Azure-native tools with full encryption, monitoring, and role-based access. All configurations followed Microsoft security best practices.</p>
+    <p>The project successfully demonstrated how to implement secure, monitored, and compliant cloud storage using native Azure capabilities. All configurations adhered to best practices for encryption, identity management, and alerting.</p>
 
     <h3 class="text-xl text-[#2ac3de] mt-6">Takeaway</h3>
-    <p>This project reflects a real-world security implementation involving encryption at rest, managed identities, RBAC, and alerting via Azure-native monitoring tools. It showcases the ability to combine infrastructure security with operational visibility using Microsoft’s cloud ecosystem.</p>
+    <p>This project showcases real-world skills in implementing defense-in-depth security using the Azure ecosystem. It emphasizes identity-based access, managed encryption, monitoring, and alerting—critical components of enterprise cloud security solutions.</p>
   </section>
 
-  <!-- Footer -->
   <footer class="text-center py-12 text-sm text-[#8b949e]">
     <h2 class="text-xl mb-4">Connect With Me</h2>
     <div class="flex justify-center gap-6">
@@ -128,4 +120,6 @@
     });
   </script>
 </body>
+</html>
+
 </html>
