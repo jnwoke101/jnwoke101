@@ -342,13 +342,29 @@
           const circles = document.querySelectorAll(".circle");
 
           if (selected.length === 0) {
-            circles.forEach(el => el.classList.remove("hidden"));
-          } else {
-            circles.forEach(el => {
-              const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
-              const matches = selected.some(tag => tags.includes(tag));
-              el.classList.toggle("hidden", !matches);
-            });
+circles.forEach(el => {
+  const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
+  const matches = selected.some(tag => tags.includes(tag));
+  const parentTrack = el.closest('.carousel-track');
+
+  if (matches) {
+    el.classList.remove("hidden");
+  } else {
+    el.classList.add("hidden");
+  }
+
+  // Adjust layout if filtering is active
+  if (selected.length > 0) {
+    parentTrack.style.transform = "none";
+    parentTrack.style.justifyContent = "flex-start";
+    parentTrack.style.flexWrap = "wrap";
+  } else {
+    // Restore default carousel layout
+    parentTrack.style.transform = ""; // will be managed by carousel logic
+    parentTrack.style.justifyContent = "";
+    parentTrack.style.flexWrap = "";
+  }
+});
           }
         });
       });
