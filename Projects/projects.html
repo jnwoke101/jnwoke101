@@ -335,41 +335,25 @@
       });
 
       document.querySelectorAll("#filterContainer input[type='checkbox']").forEach(cb => {
-  cb.addEventListener("change", () => {
-    const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
-      .map(el => el.nextElementSibling.textContent.trim());
+        cb.addEventListener("change", () => {
+          const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
+            .map(el => el.nextElementSibling.textContent.trim());
 
-    const circles = document.querySelectorAll(".circle");
+          const circles = document.querySelectorAll(".circle");
 
-    circles.forEach(el => {
-      const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
-      const matches = selected.some(tag => tags.includes(tag));
-      const parentTrack = el.closest('.carousel-track');
-      const wrapper = parentTrack.closest('.carousel-wrapper');
-      const arrows = wrapper.querySelectorAll('.carousel-arrow');
-
-      if (selected.length === 0) {
-        el.classList.remove("hidden");
-        parentTrack.style.transform = "";
-        parentTrack.style.justifyContent = "";
-        parentTrack.style.flexWrap = "";
-        arrows.forEach(arrow => arrow.style.display = "");
-      } else {
-        if (matches) {
-          el.classList.remove("hidden");
-        } else {
-          el.classList.add("hidden");
-        }
-
-        parentTrack.style.transform = "none";
-        parentTrack.style.justifyContent = "flex-start";
-        parentTrack.style.flexWrap = "wrap";
-        arrows.forEach(arrow => arrow.style.display = "none");
-      }
-    });
+          if (selected.length === 0) {
+            circles.forEach(el => el.classList.remove("hidden"));
+          } else {
+            circles.forEach(el => {
+              const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
+              const matches = selected.some(tag => tags.includes(tag));
+              el.classList.toggle("hidden", !matches);
+            });
+          }
+        });
+      });
+    }
   });
-});
-
 
   function toggleFilters() {
     const el = document.getElementById("filterContainer");
@@ -418,4 +402,3 @@ document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
   </footer>
 </body>
 </html>
-
