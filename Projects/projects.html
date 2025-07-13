@@ -146,6 +146,16 @@
     </a>
   </section>
 
+<!-- 🧰 Filter Section -->
+<div class="flex flex-col items-center mt-6 mb-4">
+  <button onclick="toggleFilters()" class="mb-4 px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">
+    Filter Projects
+  </button>
+  <div id="filterContainer" class="hidden flex flex-wrap justify-center gap-3 px-4 py-4 max-w-5xl bg-[#161b22] border border-[#2ac3de] rounded-lg">
+    <!-- Filter Tags will be inserted dynamically -->
+  </div>
+</div>
+    
   <!-- 🔍 Search Bar -->
   <div class="flex flex-col items-center mb-12 relative">
     <input
@@ -158,6 +168,8 @@
     <ul id="suggestions" class="bg-[#161b22] text-[#c9d1d9] w-1/2 mt-2 rounded shadow-lg hidden max-h-48 overflow-y-auto z-50 border border-[#2ac3de] hidden"></ul>
   </div>
 
+
+    
   <!-- Project Sections -->
   <section class="max-w-7xl mx-auto pt-8">
     <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Home Labs</h2>
@@ -166,17 +178,18 @@
       <div class="carousel-track">
         <div class="carousel-slide">
           <div class="circle-grid">
-            <div class="circle"><a href="/Projects/HomeLabs/HomeLab1/homelab1.html">Secure Cloud Storage with Azure Key Vault & Encryption</a></div>
-            <div class="circle"><a href="/HomeLabs/smart-firewall.html">Smart Firewall</a></div>
-            <div class="circle"><a href="HomeLabs/pi-ids.html">Pi IDS</a></div>
-            <div class="circle"><a href="HomeLabs/threat-feed.html">Threat Feed</a></div>
+<div class="circle" data-tags="Azure, Encryption, Risk Management"><a href="/Projects/HomeLabs/HomeLab1/homelab1.html">Secure Cloud Storage with Azure Key Vault & Encryption</a></div>
+<div class="circle" data-tags="Firewalls, Network Segmentation, Raspberry Pi"><a href="/HomeLabs/smart-firewall.html">Smart Firewall</a></div>
+<div class="circle" data-tags="IDS/IPS, Raspberry Pi, Blue Team (Defense)"><a href="HomeLabs/pi-ids.html">Pi IDS</a></div>
+<div class="circle" data-tags="Threat Hunting, Threat Intelligence, Python"><a href="HomeLabs/threat-feed.html">Threat Feed</a></div>
+
           </div>
         </div>
         <div class="carousel-slide">
           <div class="circle-grid">
-            <div class="circle"><a href="home-network.html">Home Network</a></div>
-            <div class="circle"><a href="home-soc.html">Home SOC</a></div>
-            <div class="circle"><a href="log-tracker.html">Log Tracker</a></div>
+<div class="circle" data-tags="Network Segmentation, Firewalls, Home Lab"><a href="home-network.html">Home Network</a></div>
+<div class="circle" data-tags="SOC & SIEM, Splunk, Blue Team (Defense), Threat Detection"><a href="home-soc.html">Home SOC</a></div>
+<div class="circle" data-tags="Log Analysis, Python, PowerShell, Bash"><a href="log-tracker.html">Log Tracker</a></div>
           </div>
         </div>
       </div>
@@ -191,16 +204,16 @@
       <div class="carousel-track">
         <div class="carousel-slide">
           <div class="circle-grid">
-            <div class="circle"><a href="/Projects/CTF/CTF1/ctf1.html">Race Condition Vulnerability</a></div>
-            <div class="circle"><a href="thm-blue.html">THM Blue</a></div>
-            <div class="circle"><a href="xss-acme.html">XSS Acme</a></div>
+<div class="circle" data-tags="Bug Bounty, Race Condition, Red Team (Offense), Web Exploitation"><a href="/Projects/CTF/CTF1/ctf1.html">Race Condition Vulnerability</a></div>
+<div class="circle" data-tags="Blue Team (Defense), THM, Linux, Windows Server"><a href="thm-blue.html">THM Blue</a></div>
+<div class="circle" data-tags="XSS, JavaScript, Web Exploitation, Bug Bounty"><a href="xss-acme.html">XSS Acme</a></div>
           </div>
         </div>
         <div class="carousel-slide">
           <div class="circle-grid">
-            <div class="circle"><a href="sql-bug.html">SQL Bug</a></div>
-            <div class="circle"><a href="rce-report.html">RCE Report</a></div>
-            <div class="circle"><a href="burp-exploit.html">Burp Exploit</a></div>
+<div class="circle" data-tags="SQL, Injection, Red Team (Offense), Database"><a href="sql-bug.html">SQL Bug</a></div>
+<div class="circle" data-tags="Command Injection, RCE, Red Team (Offense), Linux"><a href="rce-report.html">RCE Report</a></div>
+<div class="circle" data-tags="Burp Suite, Web Exploitation, Proxy, Red Team (Offense)"><a href="burp-exploit.html">Burp Exploit</a></div>
           </div>
         </div>
       </div>
@@ -215,16 +228,16 @@
       <div class="carousel-track">
         <div class="carousel-slide">
           <div class="circle-grid">
-            <div class="circle"><a href="net-mon.html">Net Mon</a></div>
-            <div class="circle"><a href="py-auto.html">Py Auto</a></div>
-            <div class="circle"><a href="log-parse.html">Log Parse</a></div>
+<div class="circle" data-tags="Network Monitoring, Python, Endpoint Protection, SIEM"><a href="net-mon.html">Net Mon</a></div>
+<div class="circle" data-tags="Python, Automation, Scripting"><a href="py-auto.html">Py Auto</a></div>
+<div class="circle" data-tags="Log Parsing, PowerShell, Threat Hunting"><a href="log-parse.html">Log Parse</a></div>
           </div>
         </div>
         <div class="carousel-slide">
           <div class="circle-grid">
-            <div class="circle"><a href="cloud-sync.html">Cloud Sync</a></div>
-            <div class="circle"><a href="threat-intel.html">Threat Intel</a></div>
-            <div class="circle"><a href="dns-watch.html">DNS Watch</a></div>
+<div class="circle" data-tags="Cloud, Bash, Azure, Sync, Risk Management"><a href="cloud-sync.html">Cloud Sync</a></div>
+<div class="circle" data-tags="Threat Intelligence, Threat Hunting, Digital Forensics"><a href="threat-intel.html">Threat Intel</a></div>
+<div class="circle" data-tags="DNS, Monitoring, IDS/IPS, Blue Team (Defense)"><a href="dns-watch.html">DNS Watch</a></div>
           </div>
         </div>
       </div>
@@ -237,6 +250,56 @@
 
   <!-- JavaScript -->
   <script>
+
+<script>
+// --- Filter Tags Array ---
+const filters = [
+  "SOC & SIEM", "Penetration Testing", "Vulnerability Management", "Threat Hunting", "Incident Response",
+  "Blue Team (Defense)", "Red Team (Offense)", "Malware Analysis", "Digital Forensics", "Risk Management",
+  "Python", "PowerShell", "JavaScript", "SQL", "YAML",
+  "Firewalls", "IDS/IPS", "Endpoint Protection", "VPNs", "Proxies", "Load Balancers", "Network Segmentation",
+  "Azure", "AWS", "Google Cloud", "Kali Linux", "pfSense", "Active Directory", "Windows Server", "Linux",
+  "Burp Suite", "Nessus/OpenVAS", "Wireshark", "Metasploit", "Bash", "Splunk", "ELK Stack"
+];
+
+// --- Render Filters ---
+window.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("filterContainer");
+  if (container) {
+    filters.forEach(f => {
+      const label = document.createElement("label");
+      label.className = "flex items-center space-x-2 text-sm text-[#c9d1d9]";
+      label.innerHTML = `<input type="checkbox" class="accent-[#2ac3de]"> <span>${f}</span>`;
+      container.appendChild(label);
+    });
+
+    // --- Filter Logic ---
+    document.querySelectorAll("#filterContainer input[type='checkbox']").forEach(cb => {
+      cb.addEventListener("change", () => {
+        const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
+          .map(el => el.nextElementSibling.textContent.trim());
+
+        const circles = document.querySelectorAll(".circle");
+
+        if (selected.length === 0) {
+          circles.forEach(el => el.classList.remove("hidden"));
+        } else {
+          circles.forEach(el => {
+            const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
+            const matches = selected.some(tag => tags.includes(tag));
+            el.classList.toggle("hidden", !matches);
+          });
+        }
+      });
+    });
+  }
+});
+
+// --- Toggle Filter Visibility ---
+function toggleFilters() {
+  const el = document.getElementById("filterContainer");
+  el.classList.toggle("hidden");
+}
     const searchInput = document.getElementById("projectSearch");
     const suggestionBox = document.getElementById("suggestions");
 
