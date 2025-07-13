@@ -245,125 +245,121 @@
     </div>
   </section>
   
-<ul id="suggestions" class="bg-[#161b22] text-[#c9d1d9] w-full mt-2 rounded shadow-lg hidden max-h-48 overflow-y-auto z-50 border border-[#2ac3de]"></ul>
-  </div>
+
 
   <!-- JavaScript -->
-  <script>
-
 <script>
-// --- Filter Tags Array ---
-const filters = [
-  "SOC & SIEM", "Penetration Testing", "Vulnerability Management", "Threat Hunting", "Incident Response",
-  "Blue Team (Defense)", "Red Team (Offense)", "Malware Analysis", "Digital Forensics", "Risk Management",
-  "Python", "PowerShell", "JavaScript", "SQL", "YAML",
-  "Firewalls", "IDS/IPS", "Endpoint Protection", "VPNs", "Proxies", "Load Balancers", "Network Segmentation",
-  "Azure", "AWS", "Google Cloud", "Kali Linux", "pfSense", "Active Directory", "Windows Server", "Linux",
-  "Burp Suite", "Nessus/OpenVAS", "Wireshark", "Metasploit", "Bash", "Splunk", "ELK Stack"
-];
+  // --- Project Search Logic ---
+  const searchInput = document.getElementById("projectSearch");
+  const suggestionBox = document.getElementById("suggestions");
 
-// --- Render Filters ---
-window.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("filterContainer");
-  if (container) {
-    filters.forEach(f => {
-      const label = document.createElement("label");
-      label.className = "flex items-center space-x-2 text-sm text-[#c9d1d9]";
-      label.innerHTML = `<input type="checkbox" class="accent-[#2ac3de]"> <span>${f}</span>`;
-      container.appendChild(label);
-    });
+  const projects = [
+    { title: "Smart Firewall", url: "smart-firewall.html" },
+    { title: "Pi IDS", url: "pi-ids.html" },
+    { title: "Secure Cloud Storage with Azure Key Vault & Encryption", url: "/Projects/HomeLabs/homelab1.html" },
+    { title: "Threat Feed", url: "threat-feed.html" },
+    { title: "Home Network", url: "home-network.html" },
+    { title: "Home SOC", url: "home-soc.html" },
+    { title: "Log Tracker", url: "log-tracker.html" },
+    { title: "Race Condition Vulnerability", url: "ctf1.html" },
+    { title: "THM Blue", url: "thm-blue.html" },
+    { title: "XSS Acme", url: "xss-acme.html" },
+    { title: "SQL Bug", url: "sql-bug.html" },
+    { title: "RCE Report", url: "rce-report.html" },
+    { title: "Burp Exploit", url: "burp-exploit.html" },
+    { title: "Net Mon", url: "net-mon.html" },
+    { title: "Py Auto", url: "py-auto.html" },
+    { title: "Log Parse", url: "log-parse.html" },
+    { title: "Cloud Sync", url: "cloud-sync.html" },
+    { title: "Threat Intel", url: "threat-intel.html" },
+    { title: "DNS Watch", url: "dns-watch.html" }
+  ];
 
-    // --- Filter Logic ---
-    document.querySelectorAll("#filterContainer input[type='checkbox']").forEach(cb => {
-      cb.addEventListener("change", () => {
-        const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
-          .map(el => el.nextElementSibling.textContent.trim());
+  searchInput.addEventListener("input", function (e) {
+    const input = e.target.value.toLowerCase();
+    suggestionBox.innerHTML = "";
 
-        const circles = document.querySelectorAll(".circle");
+    if (!input.trim()) {
+      suggestionBox.classList.add("hidden");
+      return;
+    }
 
-        if (selected.length === 0) {
-          circles.forEach(el => el.classList.remove("hidden"));
-        } else {
-          circles.forEach(el => {
-            const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
-            const matches = selected.some(tag => tags.includes(tag));
-            el.classList.toggle("hidden", !matches);
-          });
-        }
+    const matches = projects.filter(p => p.title.toLowerCase().includes(input));
+
+    if (matches.length > 0) {
+      suggestionBox.classList.remove("hidden");
+      matches.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = p.title;
+        li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-[#0d1117] cursor-pointer";
+        li.onclick = () => {
+          window.location.href = p.url;
+        };
+        suggestionBox.appendChild(li);
       });
-    });
-  }
-});
+    } else {
+      suggestionBox.classList.add("hidden");
+    }
+  });
 
-// --- Toggle Filter Visibility ---
-function toggleFilters() {
-  const el = document.getElementById("filterContainer");
-  el.classList.toggle("hidden");
-}
-    const searchInput = document.getElementById("projectSearch");
-    const suggestionBox = document.getElementById("suggestions");
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  });
 
-    const projects = [
-      { title: "Smart Firewall", url: "smart-firewall.html" },
-      { title: "Pi IDS", url: "pi-ids.html" },
-      { title: "Secure Cloud Storage with Azure Key Vault & Encryption", url: "/Projects/HomeLabs/homelab1.html" },
-      { title: "Threat Feed", url: "threat-feed.html" },
-      { title: "Home Network", url: "home-network.html" },
-      { title: "Home SOC", url: "home-soc.html" },
-      { title: "Log Tracker", url: "log-tracker.html" },
-      { title: "Race Condition Vulnerability", url: "ctf1.html" },
-      { title: "THM Blue", url: "thm-blue.html" },
-      { title: "XSS Acme", url: "xss-acme.html" },
-      { title: "SQL Bug", url: "sql-bug.html" },
-      { title: "RCE Report", url: "rce-report.html" },
-      { title: "Burp Exploit", url: "burp-exploit.html" },
-      { title: "Net Mon", url: "net-mon.html" },
-      { title: "Py Auto", url: "py-auto.html" },
-      { title: "Log Parse", url: "log-parse.html" },
-      { title: "Cloud Sync", url: "cloud-sync.html" },
-      { title: "Threat Intel", url: "threat-intel.html" },
-      { title: "DNS Watch", url: "dns-watch.html" },
-    ];
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
+      suggestionBox.classList.add("hidden");
+    }
+  });
 
-    searchInput.addEventListener("input", function (e) {
-      const input = e.target.value.toLowerCase();
-      suggestionBox.innerHTML = "";
+  // --- Filter Setup ---
+  const filters = [
+    "SOC & SIEM", "Penetration Testing", "Vulnerability Management", "Threat Hunting", "Incident Response",
+    "Blue Team (Defense)", "Red Team (Offense)", "Malware Analysis", "Digital Forensics", "Risk Management",
+    "Python", "PowerShell", "JavaScript", "SQL", "YAML",
+    "Firewalls", "IDS/IPS", "Endpoint Protection", "VPNs", "Proxies", "Load Balancers", "Network Segmentation",
+    "Azure", "AWS", "Google Cloud", "Kali Linux", "pfSense", "Active Directory", "Windows Server", "Linux",
+    "Burp Suite", "Nessus/OpenVAS", "Wireshark", "Metasploit", "Bash", "Splunk", "ELK Stack"
+  ];
 
-      if (!input.trim()) {
-        suggestionBox.classList.add("hidden");
-        return;
-      }
+  window.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("filterContainer");
+    if (container) {
+      filters.forEach(f => {
+        const label = document.createElement("label");
+        label.className = "flex items-center space-x-2 text-sm text-[#c9d1d9]";
+        label.innerHTML = `<input type="checkbox" class="accent-[#2ac3de]"> <span>${f}</span>`;
+        container.appendChild(label);
+      });
 
-      const matches = projects.filter(p => p.title.toLowerCase().includes(input));
+      document.querySelectorAll("#filterContainer input[type='checkbox']").forEach(cb => {
+        cb.addEventListener("change", () => {
+          const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
+            .map(el => el.nextElementSibling.textContent.trim());
 
-      if (matches.length > 0) {
-        suggestionBox.classList.remove("hidden");
-        matches.forEach(p => {
-          const li = document.createElement("li");
-          li.textContent = p.title;
-          li.className = "px-4 py-2 hover:bg-[#2ac3de] hover:text-[#0d1117] cursor-pointer";
-          li.onclick = () => {
-            window.location.href = p.url;
-          };
-          suggestionBox.appendChild(li);
+          const circles = document.querySelectorAll(".circle");
+
+          if (selected.length === 0) {
+            circles.forEach(el => el.classList.remove("hidden"));
+          } else {
+            circles.forEach(el => {
+              const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
+              const matches = selected.some(tag => tags.includes(tag));
+              el.classList.toggle("hidden", !matches);
+            });
+          }
         });
-      } else {
-        suggestionBox.classList.add("hidden");
-      }
-    });
+      });
+    }
+  });
 
-    searchInput.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-      }
-    });
-
-    document.addEventListener("click", function (e) {
-      if (!e.target.closest("#projectSearch") && !e.target.closest("#suggestions")) {
-        suggestionBox.classList.add("hidden");
-      }
-    });
-  </script>
+  function toggleFilters() {
+    const el = document.getElementById("filterContainer");
+    el.classList.toggle("hidden");
+  }
+</script>
   <!-- Footer -->
   <footer class="text-center py-12 text-sm text-[#8b949e]">
     <h2 class="text-xl mb-4">Connect With Me</h2>
