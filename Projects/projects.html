@@ -359,6 +359,37 @@
     const el = document.getElementById("filterContainer");
     el.classList.toggle("hidden");
   }
+// === CAROUSEL AUTO SLIDE + ARROW CONTROL ===
+document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
+  const track = wrapper.querySelector(".carousel-track");
+  const slides = wrapper.querySelectorAll(".carousel-slide");
+  const leftArrow = wrapper.querySelector(".carousel-arrow.left");
+  const rightArrow = wrapper.querySelector(".carousel-arrow.right");
+
+  let index = 0;
+
+  const updateCarousel = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  const nextSlide = () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  };
+
+  const prevSlide = () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+  };
+
+  // Auto-slide every 5 seconds
+  setInterval(nextSlide, 5000);
+
+  // Click controls
+  rightArrow.addEventListener("click", nextSlide);
+  leftArrow.addEventListener("click", prevSlide);
+});
+
 </script>
   <!-- Footer -->
   <footer class="text-center py-12 text-sm text-[#8b949e]">
