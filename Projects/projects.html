@@ -43,19 +43,21 @@
       padding: 2rem 0 4rem 0;
     }
 
-    .circle {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background-color: #161b22;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      font-weight: bold;
-      padding: 10px;
-    }
+.circle {
+  width: 200px;
+  height: auto; /* allow figcaption outside */
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
 
     .circle:hover {
       transform: scale(1.1);
@@ -171,79 +173,192 @@
 
     
   <!-- Project Sections -->
-  <section class="max-w-7xl mx-auto pt-8">
-    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Home Labs</h2>
-    <div class="carousel-wrapper">
-      <button class="carousel-arrow left">&#9664;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="circle-grid">
-<div class="circle" data-tags="Azure, Encryption, Risk Management"><a href="/Projects/HomeLabs/HomeLab1/homelab1.html">Secure Cloud Storage with Azure Key Vault & Encryption</a></div>
-<div class="circle" data-tags="Firewalls, Network Segmentation, Raspberry Pi"><a href="/HomeLabs/smart-firewall.html">Smart Firewall</a></div>
-<div class="circle" data-tags="IDS/IPS, Raspberry Pi, Blue Team (Defense)"><a href="HomeLabs/pi-ids.html">Pi IDS</a></div>
-<div class="circle" data-tags="Threat Hunting, Threat Intelligence, Python"><a href="HomeLabs/threat-feed.html">Threat Feed</a></div>
+<section class="max-w-7xl mx-auto pt-8">
+  <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Home Labs</h2>
+  <div class="carousel-wrapper">
+    <button class="carousel-arrow left">&#9664;</button>
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <div class="circle-grid">
+          <figure class="circle" data-tags="Azure, Encryption, Risk Management">
+            <a href="/Projects/HomeLabs/HomeLab1/homelab1.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/homelab1.png" alt="Azure Lab" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Secure Cloud Storage with Azure</figcaption>
+          </figure>
 
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <div class="circle-grid">
-<div class="circle" data-tags="Network Segmentation, Firewalls, Home Lab"><a href="home-network.html">Home Network</a></div>
-<div class="circle" data-tags="SOC & SIEM, Splunk, Blue Team (Defense), Threat Detection"><a href="home-soc.html">Home SOC</a></div>
-<div class="circle" data-tags="Log Analysis, Python, PowerShell, Bash"><a href="log-tracker.html">Log Tracker</a></div>
-          </div>
+          <figure class="circle" data-tags="Firewalls, Network Segmentation, Raspberry Pi">
+            <a href="/HomeLabs/smart-firewall.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/smart-firewall.png" alt="Smart Firewall" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Smart Firewall</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="IDS/IPS, Raspberry Pi, Blue Team (Defense)">
+            <a href="HomeLabs/pi-ids.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/pi-ids.png" alt="Pi IDS" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Pi IDS</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Threat Hunting, Threat Intelligence, Python">
+            <a href="HomeLabs/threat-feed.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/threat-feed.png" alt="Threat Feed" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Threat Feed</figcaption>
+          </figure>
         </div>
       </div>
-      <button class="carousel-arrow right">&#9654;</button>
-    </div>
-  </section>
 
-  <section class="max-w-7xl mx-auto">
-    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">CTFs & Bug Bounties</h2>
-    <div class="carousel-wrapper">
-      <button class="carousel-arrow left">&#9664;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="circle-grid">
-<div class="circle" data-tags="Bug Bounty, Burp Suite, Race Condition, Red Team (Offense), Web Exploitation"><a href="/Projects/CTF/CTF1/ctf1.html">Race Condition Vulnerability</a></div>
-<div class="circle" data-tags="Blue Team (Defense), THM, Linux, Windows Server"><a href="thm-blue.html">THM Blue</a></div>
-<div class="circle" data-tags="XSS, JavaScript, Web Exploitation, Bug Bounty"><a href="xss-acme.html">XSS Acme</a></div>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <div class="circle-grid">
-<div class="circle" data-tags="SQL, Injection, Red Team (Offense), Database"><a href="sql-bug.html">SQL Bug</a></div>
-<div class="circle" data-tags="Command Injection, RCE, Red Team (Offense), Linux"><a href="rce-report.html">RCE Report</a></div>
-<div class="circle" data-tags="Burp Suite, Web Exploitation, Proxy, Red Team (Offense)"><a href="burp-exploit.html">Burp Exploit</a></div>
-          </div>
+      <div class="carousel-slide">
+        <div class="circle-grid">
+          <figure class="circle" data-tags="Network Segmentation, Firewalls, Home Lab">
+            <a href="home-network.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/home-network.png" alt="Home Network" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Home Network</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="SOC & SIEM, Splunk, Blue Team (Defense), Threat Detection">
+            <a href="home-soc.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/home-soc.png" alt="Home SOC" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Home SOC</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Log Analysis, Python, PowerShell, Bash">
+            <a href="log-tracker.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/log-tracker.png" alt="Log Tracker" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Log Tracker</figcaption>
+          </figure>
         </div>
       </div>
-      <button class="carousel-arrow right">&#9654;</button>
     </div>
-  </section>
+    <button class="carousel-arrow right">&#9654;</button>
+  </div>
+</section>
 
-  <section class="max-w-7xl mx-auto">
-    <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Other Projects</h2>
-    <div class="carousel-wrapper">
-      <button class="carousel-arrow left">&#9664;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="circle-grid">
-<div class="circle" data-tags="Network Monitoring, Python, Endpoint Protection, SIEM"><a href="net-mon.html">Net Mon</a></div>
-<div class="circle" data-tags="Python, Automation, Scripting"><a href="py-auto.html">Py Auto</a></div>
-<div class="circle" data-tags="Log Parsing, PowerShell, Threat Hunting"><a href="log-parse.html">Log Parse</a></div>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <div class="circle-grid">
-<div class="circle" data-tags="Cloud, Bash, Azure, Sync, Risk Management"><a href="cloud-sync.html">Cloud Sync</a></div>
-<div class="circle" data-tags="Threat Intelligence, Threat Hunting, Digital Forensics"><a href="threat-intel.html">Threat Intel</a></div>
-<div class="circle" data-tags="DNS, Monitoring, IDS/IPS, Blue Team (Defense)"><a href="dns-watch.html">DNS Watch</a></div>
-          </div>
+
+<section class="max-w-7xl mx-auto">
+  <h2 class="text-3xl text-[#2ac3de] text-center mb-8">CTFs & Bug Bounties</h2>
+  <div class="carousel-wrapper">
+    <button class="carousel-arrow left">&#9664;</button>
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <div class="circle-grid">
+          <figure class="circle" data-tags="Bug Bounty, Burp Suite, Race Condition, Red Team (Offense), Web Exploitation">
+            <a href="/Projects/CTF/CTF1/ctf1.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/ctf1.png" alt="Race Condition" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Race Condition Vulnerability</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Blue Team (Defense), THM, Linux, Windows Server">
+            <a href="thm-blue.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/thm-blue.png" alt="THM Blue" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">THM Blue</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="XSS, JavaScript, Web Exploitation, Bug Bounty">
+            <a href="xss-acme.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/xss-acme.png" alt="XSS Acme" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">XSS Acme</figcaption>
+          </figure>
         </div>
       </div>
-      <button class="carousel-arrow right">&#9654;</button>
+
+      <div class="carousel-slide">
+        <div class="circle-grid">
+          <figure class="circle" data-tags="SQL, Injection, Red Team (Offense), Database">
+            <a href="sql-bug.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/sql-bug.png" alt="SQL Bug" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">SQL Bug</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Command Injection, RCE, Red Team (Offense), Linux">
+            <a href="rce-report.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/rce-report.png" alt="RCE Report" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">RCE Report</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Burp Suite, Web Exploitation, Proxy, Red Team (Offense)">
+            <a href="burp-exploit.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/burp-exploit.png" alt="Burp Exploit" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Burp Exploit</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
-  </section>
+    <button class="carousel-arrow right">&#9654;</button>
+  </div>
+</section>
+
+
+<section class="max-w-7xl mx-auto">
+  <h2 class="text-3xl text-[#2ac3de] text-center mb-8">Other Projects</h2>
+  <div class="carousel-wrapper">
+    <button class="carousel-arrow left">&#9664;</button>
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <div class="circle-grid">
+          <figure class="circle" data-tags="Network Monitoring, Python, Endpoint Protection, SIEM">
+            <a href="net-mon.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/net-mon.png" alt="Net Mon" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Net Mon</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Python, Automation, Scripting">
+            <a href="py-auto.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/py-auto.png" alt="Py Auto" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Py Auto</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Log Parsing, PowerShell, Threat Hunting">
+            <a href="log-parse.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/log-parse.png" alt="Log Parse" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Log Parse</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="circle-grid">
+          <figure class="circle" data-tags="Cloud, Bash, Azure, Sync, Risk Management">
+            <a href="cloud-sync.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/cloud-sync.png" alt="Cloud Sync" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Cloud Sync</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="Threat Intelligence, Threat Hunting, Digital Forensics">
+            <a href="threat-intel.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/threat-intel.png" alt="Threat Intel" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">Threat Intel</figcaption>
+          </figure>
+
+          <figure class="circle" data-tags="DNS, Monitoring, IDS/IPS, Blue Team (Defense)">
+            <a href="dns-watch.html" class="flex flex-col items-center justify-center">
+              <img src="/Projects/thumbnail/dns-watch.png" alt="DNS Watch" class="w-24 h-24 rounded-full object-cover" />
+            </a>
+            <figcaption class="mt-2 text-sm text-center font-semibold">DNS Watch</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-arrow right">&#9654;</button>
+  </div>
+</section>
+
   
 
 
