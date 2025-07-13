@@ -335,41 +335,41 @@
       });
 
       document.querySelectorAll("#filterContainer input[type='checkbox']").forEach(cb => {
-        cb.addEventListener("change", () => {
-          const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
-            .map(el => el.nextElementSibling.textContent.trim());
+  cb.addEventListener("change", () => {
+    const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
+      .map(el => el.nextElementSibling.textContent.trim());
 
-          const circles = document.querySelectorAll(".circle");
+    const circles = document.querySelectorAll(".circle");
 
-          if (selected.length === 0) {
-circles.forEach(el => {
-  const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
-  const matches = selected.some(tag => tags.includes(tag));
-  const parentTrack = el.closest('.carousel-track');
+    circles.forEach(el => {
+      const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
+      const matches = selected.some(tag => tags.includes(tag));
+      const parentTrack = el.closest('.carousel-track');
+      const wrapper = parentTrack.closest('.carousel-wrapper');
+      const arrows = wrapper.querySelectorAll('.carousel-arrow');
 
-  if (matches) {
-    el.classList.remove("hidden");
-  } else {
-    el.classList.add("hidden");
-  }
+      if (selected.length === 0) {
+        el.classList.remove("hidden");
+        parentTrack.style.transform = "";
+        parentTrack.style.justifyContent = "";
+        parentTrack.style.flexWrap = "";
+        arrows.forEach(arrow => arrow.style.display = "");
+      } else {
+        if (matches) {
+          el.classList.remove("hidden");
+        } else {
+          el.classList.add("hidden");
+        }
 
-  // Adjust layout if filtering is active
-  if (selected.length > 0) {
-    parentTrack.style.transform = "none";
-    parentTrack.style.justifyContent = "flex-start";
-    parentTrack.style.flexWrap = "wrap";
-  } else {
-    // Restore default carousel layout
-    parentTrack.style.transform = ""; // will be managed by carousel logic
-    parentTrack.style.justifyContent = "";
-    parentTrack.style.flexWrap = "";
-  }
-});
-          }
-        });
-      });
-    }
+        parentTrack.style.transform = "none";
+        parentTrack.style.justifyContent = "flex-start";
+        parentTrack.style.flexWrap = "wrap";
+        arrows.forEach(arrow => arrow.style.display = "none");
+      }
+    });
   });
+});
+
 
   function toggleFilters() {
     const el = document.getElementById("filterContainer");
