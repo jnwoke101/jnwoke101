@@ -334,20 +334,58 @@
         container.appendChild(label);
       });
 
+      // ✅ THIS IS THE NEW REPLACED FILTER LOGIC
       document.querySelectorAll("#filterContainer input[type='checkbox']").forEach(cb => {
         cb.addEventListener("change", () => {
           const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
             .map(el => el.nextElementSibling.textContent.trim());
 
+          const allSections = document.querySelectorAll("section");
           const circles = document.querySelectorAll(".circle");
+          const carousels = document.querySelectorAll(".carousel-wrapper");
 
           if (selected.length === 0) {
-            circles.forEach(el => el.classList.remove("hidden"));
+            // Reset to original view
+            allSections.forEach(section => section.classList.remove("hidden"));
+            circles.forEach(c => c.classList.remove("hidden"));
+            carousels.forEach(carousel => {
+              carousel.style.display = "";
+              carousel.querySelectorAll(".carousel-arrow").forEach(arrow => arrow.style.display = "");
+              const track = carousel.querySelector('.carousel-track');
+              if (track) {
+                track.style.flexWrap = "";
+                track.style.justifyContent = "";
+              }
+            });
           } else {
+            // Hide all sections and show only matched projects
+            allSections.forEach(section => section.classList.add("hidden"));
             circles.forEach(el => {
               const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
               const matches = selected.some(tag => tags.includes(tag));
-              el.classList.toggle("hidden", !matches);
+
+              const outerSection = el.closest("section");
+              if (matches) {
+                el.classList.remove("hidden");
+                if (outerSection) outerSection.classList.remove("hidden");
+
+                const track = el.closest(".carousel-track");
+                if (track) {
+                  track.style.flexWrap = "wrap";
+                  track.style.justifyContent = "flex-start";
+                }
+
+                const wrapper = el.closest(".carousel-wrapper");
+                if (wrapper) {
+                  wrapper.style.display = "block";
+                  wrapper.querySelectorAll(".carousel-arrow").forEach(arrow => arrow.style.display = "none");
+                }
+
+                const heading = outerSection?.querySelector("h2");
+                if (heading) heading.classList.remove("hidden");
+              } else {
+                el.classList.add("hidden");
+              }
             });
           }
         });
@@ -359,38 +397,39 @@
     const el = document.getElementById("filterContainer");
     el.classList.toggle("hidden");
   }
-// === CAROUSEL AUTO SLIDE + ARROW CONTROL ===
-document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
-  const track = wrapper.querySelector(".carousel-track");
-  const slides = wrapper.querySelectorAll(".carousel-slide");
-  const leftArrow = wrapper.querySelector(".carousel-arrow.left");
-  const rightArrow = wrapper.querySelector(".carousel-arrow.right");
 
-  let index = 0;
+  // === CAROUSEL AUTO SLIDE + ARROW CONTROL ===
+  document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
+    const track = wrapper.querySelector(".carousel-track");
+    const slides = wrapper.querySelectorAll(".carousel-slide");
+    const leftArrow = wrapper.querySelector(".carousel-arrow.left");
+    const rightArrow = wrapper.querySelector(".carousel-arrow.right");
 
-  const updateCarousel = () => {
-    track.style.transform = `translateX(-${index * 100}%)`;
-  };
+    let index = 0;
 
-  const nextSlide = () => {
-    index = (index + 1) % slides.length;
-    updateCarousel();
-  };
+    const updateCarousel = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    };
 
-  const prevSlide = () => {
-    index = (index - 1 + slides.length) % slides.length;
-    updateCarousel();
-  };
+    const nextSlide = () => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    };
 
-  // Auto-slide every 5 seconds
-  setInterval(nextSlide, 5000);
+    const prevSlide = () => {
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+    };
 
-  // Click controls
-  rightArrow.addEventListener("click", nextSlide);
-  leftArrow.addEventListener("click", prevSlide);
-});
+    // Auto-slide every 5 seconds
+    setInterval(nextSlide, 5000);
 
+    // Click controls
+    rightArrow.addEventListener("click", nextSlide);
+    leftArrow.addEventListener("click", prevSlide);
+  });
 </script>
+
   <!-- Footer -->
   <footer class="text-center py-12 text-sm text-[#8b949e]">
     <h2 class="text-xl mb-4">Connect With Me</h2>
