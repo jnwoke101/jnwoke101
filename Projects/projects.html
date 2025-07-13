@@ -334,7 +334,6 @@
         container.appendChild(label);
       });
 
-      // ✅ THIS IS THE NEW REPLACED FILTER LOGIC
       document.querySelectorAll("#filterContainer input[type='checkbox']").forEach(cb => {
         cb.addEventListener("change", () => {
           const selected = Array.from(document.querySelectorAll("#filterContainer input[type='checkbox']:checked"))
@@ -345,7 +344,7 @@
           const carousels = document.querySelectorAll(".carousel-wrapper");
 
           if (selected.length === 0) {
-            // Reset to original view
+            // ✅ Restore full layout
             allSections.forEach(section => section.classList.remove("hidden"));
             circles.forEach(c => c.classList.remove("hidden"));
             carousels.forEach(carousel => {
@@ -357,8 +356,9 @@
                 track.style.justifyContent = "";
               }
             });
+            restartCarouselAutoSlide(); // ✅ Restart auto-slide
           } else {
-            // Hide all sections and show only matched projects
+            // ✅ Show only filtered items
             allSections.forEach(section => section.classList.add("hidden"));
             circles.forEach(el => {
               const tags = el.getAttribute("data-tags").split(",").map(t => t.trim());
@@ -387,6 +387,8 @@
                 el.classList.add("hidden");
               }
             });
+
+            stopCarouselAutoSlide(); // ✅ Stop auto-slide during filtering
           }
         });
       });
@@ -399,7 +401,9 @@
   }
 
   // === CAROUSEL AUTO SLIDE + ARROW CONTROL ===
-  document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
+  const carouselIntervals = [];
+
+  document.querySelectorAll(".carousel-wrapper").forEach((wrapper, i) => {
     const track = wrapper.querySelector(".carousel-track");
     const slides = wrapper.querySelectorAll(".carousel-slide");
     const leftArrow = wrapper.querySelector(".carousel-arrow.left");
@@ -421,14 +425,38 @@
       updateCarousel();
     };
 
-    // Auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    const intervalId = setInterval(nextSlide, 5000);
+    carouselIntervals.push(intervalId);
 
-    // Click controls
     rightArrow.addEventListener("click", nextSlide);
     leftArrow.addEventListener("click", prevSlide);
   });
+
+  function stopCarouselAutoSlide() {
+    carouselIntervals.forEach(id => clearInterval(id));
+  }
+
+  function restartCarouselAutoSlide() {
+    document.querySelectorAll(".carousel-wrapper").forEach((wrapper, i) => {
+      const track = wrapper.querySelector(".carousel-track");
+      const slides = wrapper.querySelectorAll(".carousel-slide");
+      let index = 0;
+
+      const updateCarousel = () => {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      };
+
+      const nextSlide = () => {
+        index = (index + 1) % slides.length;
+        updateCarousel();
+      };
+
+      const newIntervalId = setInterval(nextSlide, 5000);
+      carouselIntervals[i] = newIntervalId;
+    });
+  }
 </script>
+
 
   <!-- Footer -->
   <footer class="text-center py-12 text-sm text-[#8b949e]">
