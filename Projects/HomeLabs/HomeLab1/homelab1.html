@@ -52,11 +52,17 @@
 
     <h3 class="text-xl text-[#2ac3de] mt-6">Tools Used</h3>
     <ul class="list-disc list-inside">
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Tools Used</h3>
+    <ul class="list-disc list-inside">
 <ul>
-  <li>Netcat: Used to establish a reverse shell connection by listening on port 4444 and capturing the incoming connection from the vulnerable system.</li>
-  <li>Exploit-DB: Used to search for known vulnerabilities in Fuel CMS v1.4 to identify potential attack vectors.</li>
-  <li>Linux CLI: Used post-exploitation to navigate the target file system, maintain shell access, and retrieve the flag from the specified directory.</li>
-</ul>
+<li><strong>Azure Active Directory:</strong> Used to manage user identities and access by creating and assigning users to security groups. This enabled enforcement of least privilege through Role-Based Access Control (RBAC).</li>
+      <li><strong>Azure Monitor:</strong> Provided real-time observability into resource behavior. It was crucial for tracking unusual or denied access attempts and issuing immediate alerts.</li>
+      <li><strong>Azure Log Analytics:</strong> Centralized logging service where diagnostic logs from Key Vault and Storage Account were sent for monitoring and analysis. It enabled deep visibility into audit trails and operational metrics.</li>
+      <li><strong>Kusto Query Language (KQL):</strong> The language used to query logs stored in Azure Log Analytics. It enabled crafting of precise alert conditions and detection of anomalies.</li>
+      <li><strong>Azure Managed Identity:</strong> Allowed the secure binding of services like Storage Account to Key Vault without needing to store credentials, supporting passwordless authentication.</li>
+      <li><strong>Azure Role-Based Access Control (RBAC):</strong> Allowed secure role assignment for groups and users to define their access levels to specific Azure resources, promoting a secure and manageable access control model.</li>
+    </ul>
 
 
 <!-- Logos Section -->
