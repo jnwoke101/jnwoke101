@@ -50,6 +50,49 @@
       <li>Enable diagnostic logging and trigger alerts for key access anomalies.</li>
     </ul>
 
+    <h3 class="text-xl text-[#2ac3de] mt-6">Tools Used</h3>
+    <ul class="list-disc list-inside">
+<ul>
+  <li>Netcat: Used to establish a reverse shell connection by listening on port 4444 and capturing the incoming connection from the vulnerable system.</li>
+  <li>Exploit-DB: Used to search for known vulnerabilities in Fuel CMS v1.4 to identify potential attack vectors.</li>
+  <li>Linux CLI: Used post-exploitation to navigate the target file system, maintain shell access, and retrieve the flag from the specified directory.</li>
+</ul>
+
+
+<!-- Logos Section -->
+<div class="flex justify-center gap-8 mt-4 flex-wrap">
+
+  <div class="flex flex-col items-center">
+    <img src="/Logos/azure_monitor_logo.png" alt="Azure Monitor" class="w-12 h-12 mb-1" />
+    <figcaption class="text-sm text-center text-[#c9d1d9]">Azure Monitor</figcaption>
+  </div>
+
+  <div class="flex flex-col items-center">
+    <img src="/Logos/azure-kql-logo.png" alt="Azure KQL" class="w-12 h-12 mb-1" />
+    <figcaption class="text-sm text-center text-[#c9d1d9]">Azure KQL</figcaption>
+  </div>
+
+  <div class="flex flex-col items-center">
+    <img src="/Logos/azure-managed-identity.png" alt="Azure Managed Identity" class="w-12 h-12 mb-1" />
+    <figcaption class="text-sm text-center text-[#c9d1d9]">Azure Managed Identity</figcaption>
+  </div>
+
+  <div class="flex flex-col items-center">
+    <img src="/Logos/azure-active-directory.png" alt="azure-active-directory" class="w-12 h-12 mb-1" />
+    <figcaption class="text-sm text-center text-[#c9d1d9]">azure-active-directory/Entra ID</figcaption>
+  </div>
+
+
+  <div class="flex flex-col items-center">
+    <img src="/Logos/azure_log_analytics.png" alt="azure_log_analytics" class="w-12 h-12 mb-1" />
+    <figcaption class="text-sm text-center text-[#c9d1d9]">Azure Log Analytics</figcaption>
+  </div>
+
+    <div class="flex flex-col items-center">
+    <img src="/Logos/azure-rbac.png" alt="Azure RBAC" class="w-12 h-12 mb-1" />
+    <figcaption class="text-sm text-center text-[#c9d1d9]">Azure RBAC</figcaption>
+  </div>
+</div>   
     <h3 class="text-xl text-[#2ac3de] mt-6">Steps Taken</h3>
     <ol class="list-decimal list-inside space-y-4">
       <li><strong>User and Identity Setup:</strong> Established user accounts and groups in Azure Active Directory to mirror department roles. These were essential for applying granular access controls through RBAC, ensuring that each user only had access to the resources required for their role. This segmentation minimizes insider threats and strengthens identity governance.</li>
