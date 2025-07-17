@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/Logos/webpage_icon.png" sizes="64x64"/> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joseph Nwoke | CTF: Reverse Shell Exploitation of</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #161b22;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #2ac3de;
+      border-radius: 10px;
+      border: 2px solid #161b22;
+    }
+    .footer {
+      margin-top: 50px;
+      padding: 20px;
+    }
+    .footer::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin-bottom: 20px;
+    }
+    .social-icons a {
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      transition: opacity 0.3s;
+    }
+    .social-icons img:hover {
+      opacity: 0.7;
+    }
+    .zoomable {
+      max-width: 100%;
+      cursor: zoom-in;
+      display: block;
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 1918px;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: 0 0 25px #2ac3de;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="bg-[#0d1117] text-[#c9d1d9]">
+  <!-- Header -->
+  <section class="text-center py-12">
+    <h1 class="text-5xl font-bold text-[#2ac3de]">JOSEPH NWOKE</h1>
+    <p class="text-lg text-[#2ac3de] mt-2">Cybersecurity Analyst | PenTester | IT Professional</p>
+    <div class="mt-6 space-x-4">
+      <a href="/index.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">About Me</button></a>
+      <a href="/Projects/projects.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Projects</button></a>
+      <a href="/Education_Career/education_and_career.html"><button class="px-6 py-2 border border-[#2ac3de] text-[#2ac3de] hover:bg-[#2ac3de] hover:text-[#0d1117] transition rounded">Education & Career</button></a>
+    </div>
+  </section>
+
+  <!-- CTF Overview -->
+  <section class="max-w-4xl mx-auto bg-[#161b22] p-6 rounded-lg">
+    <h2 class="text-3xl text-[#2ac3de] mb-4">CTF Overview: Exploiting a Race Condition Vulnerability in a Bank's Web Server</h2>
+    <h3 class="text-xl text-[#2ac3de] mt-6">Objective</h3>
+    <ul class="list-disc list-inside">
+      <li>Simulate a scenario where I, acting as an attacker, exploit a vulnerable web application to gain unauthorized access to a blog management system.</li>
+      <li>The application is powered by Fuel CMS version 1.4, which contains known vulnerabilities publicly available on exploit databases.</li>
+      <li>In a real-world scenario, this could represent an attacker performing reconnaissance and leveraging publicly known exploits to compromise a content management system, gain shell access, and retrieve sensitive data from the target server.</li>
+    </ul>
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Tools Used</h3>
+    <ul class="list-disc list-inside">
+<ul>
+  <li>Netcat: Used to establish a reverse shell connection by listening on port 4444 and capturing the incoming connection from the vulnerable system.</li>
+  <li>Exploit-DB: Used to search for known vulnerabilities in Fuel CMS v1.4 to identify potential attack vectors.</li>
+  <li>Linux CLI: Used post-exploitation to navigate the target file system, maintain shell access, and retrieve the flag from the specified directory.</li>
+</ul>
+
+
+<!-- Logos Section -->
+<img src="/Logos/netcat-logo.png" alt="Netcat logo" class="h-12 mt-2" />
+<img src="/Logos/exploitdb.png" alt="Exploit-DB logo" class="h-12 mt-2" />
+<img src="/Logos/linux-logo.png" alt="Linux logo" class="h-12 mt-2" />
+
+    <h3 class="text-xl text-[#2ac3de] mt-6">Steps Taken</h3>
+   <ol class="list-decimal list-inside space-y-6">
+  <li>
+    <strong>Initial Reconnaissance</strong><br/>
+    <p>Upon accessing the target URL provided in the TryHackMe environment, I was presented with a blog interface for CKME Support Inc. By inspecting the page source and the application footer, I identified that the site was built using Fuel CMS, specifically version 1.4. This information would be crucial for identifying known vulnerabilities in public exploit databases.</p>
+    <img src="/Projects/CTF/CTF2/identifying web application version.gif" alt="Identifying Web Application Version" class="zoomable" />
+  </li>
+
+  <li>
+    <strong>Vulnerability Research</strong><br/>
+    <p>With the CMS and version number identified, I conducted open-source intelligence (OSINT) using tools like <code>searchsploit</code> and <a href="https://www.exploit-db.com" target="_blank">Exploit-DB</a>. I searched for known exploits related to Fuel CMS 1.4 and downloaded relevant proof-of-concept files to test locally on the attack machine. While a few initial attempts didn't yield results, this phase helped narrow down the potential attack surface.</p>
+    <img src="/Projects/CTF/CTF2/finding the vulnerabilities on database.gif" alt="Finding Vulnerabilities on Exploit-DB" class="zoomable" />
+  </li>
+
+  <li>
+    <strong>Discovering the Exploitable Component</strong><br/>
+    <p>Thanks to a hint provided within the TryHackMe challenge, I searched the attack machine’s local directories and found a hidden file/script. This file included a small interactive menu with three options: Help, Exit, and Reverse Shell. The reverse shell option suggested the ability to initiate a remote connection to my own machine—ideal for gaining shell access on the vulnerable server.</p>
+  </li>
+
+  <li>
+    <strong>Establishing Reverse Shell Access</strong><br/>
+    <p>Before triggering the reverse shell, I launched <code>netcat</code> on my own machine using port 4444 to listen for incoming connections: <code>nc -lvnp 4444</code>. I then ran the script’s reverse shell option and provided my machine’s IP and the specified port. Within seconds, I received an active shell session on my terminal, indicating that I had successfully exploited the system and gained access as a user with elevated privileges.</p>
+    <img src="/Projects/CTF/CTF2/remote into target.gif" alt="Remote Access to Target via Reverse Shell" class="zoomable" />
+  </li>
+
+  <li>
+    <strong>Post-Exploitation and Privilege Enumeration</strong><br/>
+    <p>With shell access established, I used standard <strong>Linux CLI commands</strong> such as <code>ls</code>, <code>cd</code>, and <code>cat</code> to navigate through system directories and enumerate valuable files. While it was possible to explore for further privilege escalation opportunities, my primary goal in this CTF was to locate and retrieve a specific flag stored in a <code>flag.txt</code> file.</p>
+  </li>
+
+  <li>
+    <strong>Flag Discovery and Capture</strong><br/>
+    <p>Fortunately, the path to the <code>flag.txt</code> file was hinted within the challenge description. I navigated directly to the directory using the shell and ran <code>cat flag.txt</code> to display its contents. With the flag successfully captured, the challenge objective was complete—demonstrating a full compromise of a misconfigured CMS using OSINT, custom scripts, and reverse shell techniques.</p>
+  </li>
+</ol>
+
+<h3 class="text-xl text-[#2ac3de] mt-6">Outcome</h3>
+<p>This CTF showcased how vulnerable CMS deployments can be identified and exploited using publicly available tools. By chaining OSINT research, reverse shell exploitation, and Linux command-line skills, I was able to simulate a full-scale penetration test from external reconnaissance to post-exploitation and flag retrieval.</p>
+
+<h3 class="text-xl text-[#2ac3de] mt-6">Takeaway</h3>
+<p>This exercise reinforces the importance of conducting regular security audits on web applications before they are published. It also highlights the dangers of unpatched CMS versions, exposed scripts, and improper system hardening. As an aspiring security professional, this challenge sharpened my skills in reconnaissance, shell access, exploit research, and Linux-based enumeration—all essential components of real-world penetration testing.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-12 text-sm text-[#8b949e]">
+    <h2 class="text-xl mb-4">Connect With Me</h2>
+    <div class="flex justify-center gap-6">
+      <a href="https://www.linkedin.com/in/joseph-n-b4a967284/" target="_blank">
+        <img src="/Logos/linkedin.png" alt="LinkedIn" class="h-8" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        overlay.innerHTML = `<img src="${img.src}" alt="zoomed image" />`;
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', () => {
+          overlay.remove();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
